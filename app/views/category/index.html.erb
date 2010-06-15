@@ -1,0 +1,17 @@
+<h1>Listing categories</h1>  
+  
+<table>  
+  <tr>  
+    <th>Name</th>  
+    <th></th>  
+    <th></th>  
+    <th></th>  
+  </tr>  
+  
+<% @categories.each do |category| %>  
+  <tr>  
+    <td><%= category.name %></td>  
+    <td><%= link_to 'Show', "/category/show/#{category.name}" %></td>  
+  </tr>  
+<% end %>  
+</table>  
