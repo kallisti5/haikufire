@@ -1,7 +1,4 @@
-<h1>Listing categories</h1>  
-  
 <% @categories.each do |category| %>  
-
 <table id=item_table>
         <tr style='background-color: #F0F0F0;'>
                 <td width=32px;><%= image_tag "/images/category_icons/#{category.name.downcase}.png" %></td>
@@ -11,5 +8,4 @@
                 </td>
         </tr>
 </table>
-
 <% end %>  
