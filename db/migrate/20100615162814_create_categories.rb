@@ -4,8 +4,8 @@ class CreateCategories < ActiveRecord::Migration
 	t.string	:name
         t.text		:description
     end
-	self.create	:name => "Development",
-			:description => "Applications or utilities relating to Haiku software development", :value => 1
+	Category.create	:name => "Development",
+			:description => "Applications or utilities relating to Haiku software development"
   end
 
   def self.down
