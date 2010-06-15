@@ -8,9 +8,9 @@ class CreateCategories < ActiveRecord::Migration
 	Category.create	:name => "Development",
 			:description => "Applications or utilities relating to Haiku software development"
 	Category.create	:name => "Drivers",
-			:description => "Haiku compatible drivers for your system"
+			:description => "Haiku compatible drivers for your system" 
 	Category.create	:name => "Engineering",
-			:description => "Engineering utilities"
+			:description => "Engineering utilities" 
 	Category.create	:name => "Games",
 			:description => "Games for the Haiku operating system."
 	Category.create	:name => "Graphics",
