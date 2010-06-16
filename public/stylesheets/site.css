@@ -5,7 +5,7 @@
 }
 
 /* Tell the browser to render HTML 5 elements as block */
-header, footer, aside, nav, article {
+header, footer, aside, nav, article, section {
 	display: block;
 }
 
@@ -24,8 +24,8 @@ h2 {
 
 h3 {
 	font-size: 18px;
-	line-height: 22px;
-	padding: 11px 0;
+	line-height: 15px;
+	padding: 0 0;
 }
 
 p {
@@ -76,9 +76,19 @@ nav ul li.selected a {
 	display: table-cell;
 	width: 620px;
 	padding-right: 22px;
+	padding-top: 60px;
+}
+
+#intro {
+	-moz-border-radius:22px 22px 22px 22px;
+	background:url("/images/intro_background.png") repeat-x scroll 0 0 #467612;
+	margin-top:66px;
+	padding:44px;
+	position:relative;
 }
 
 aside {
-	display: table-cell;
-	width: 300px;
+	background:url("/images/sidebar_background.png") repeat scroll left top transparent;
+	display:table-cell;
+	width:300px;
 }
