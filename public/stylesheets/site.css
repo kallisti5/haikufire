@@ -68,13 +68,6 @@ nav ul li.selected a {
 	color: #fff;
 }
 
-nav ul li.subscribe a {
-	margin-left: 22px;
-	padding-left: 33px;
-	text-align: left;
-	background: url("rss.png") left center no-repeat;
-}
-
 #content {
 	display: table;
 }
