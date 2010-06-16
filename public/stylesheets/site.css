@@ -91,11 +91,25 @@ nav ul li.selected a {
 }
 
 #intro {
+	border-radius:22px 22px 22px 22px;
 	-moz-border-radius:22px 22px 22px 22px;
-	background:url("/images/intro_background.png") repeat-x scroll 0 0 #467612;
+	-webkit-border-radius:22px 22px 22px 22px;
+	background:url("/images/intro.png") repeat-x scroll 0 0 #467612;
 	margin-top:66px;
 	padding:44px;
+	height: 300px;
 	position:relative;
+	color: #fff;
+	text-shadow: 1px 1px 2px black;
+}
+
+#intro .title {
+	font-size: 34px;
+}
+
+#intro .detail {
+	margin-left:20px;
+	margin-top:4px;
 }
 
 aside {
