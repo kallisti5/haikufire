@@ -77,6 +77,7 @@ nav ul li.selected a {
 	width: 620px;
 	padding-right: 22px;
 	padding-top: 60px;
+	padding-bottom:25px;
 }
 
 #mainContent .item td {
@@ -95,6 +96,7 @@ nav ul li.selected a {
 	-moz-border-radius:22px 22px 22px 22px;
 	-webkit-border-radius:22px 22px 22px 22px;
 	background:url("/images/intro.png") repeat-x scroll 0 0 #467612;
+	border:1px solid black;
 	margin-top:66px;
 	padding:44px;
 	height: 300px;
@@ -116,4 +118,20 @@ aside {
 	background:url("/images/sidebar_background.png") repeat scroll left top transparent;
 	display:table-cell;
 	width:300px;
+}
+
+footer {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	background: #222;
+	color: white;
+}
+
+footer div {
+	display: table;
+	margin: 0 auto;
+	padding: 44px 0;
+	width: 940px;
+	color: #777;
 }
