@@ -1,8 +1,8 @@
 <% @categories.each do |category| %>  
-<table id=item_table>
+<table class=item>
         <tr>
                 <th width=32px;><%= image_tag "/images/category_icons/#{category.name.downcase}.png" %></th>
-                <td 'padding-left: 5px;'>
+                <td>
 			<%= link_to category.name, "/category/show/#{category.id}" %>
                         <br><span style='font-size: 0.9em; margin-left: 5px;'><%= category.description %></span>
                 </td>

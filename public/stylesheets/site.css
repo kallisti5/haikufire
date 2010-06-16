@@ -79,6 +79,17 @@ nav ul li.selected a {
 	padding-top: 60px;
 }
 
+#mainContent .item td {
+	background-image:url("/images/sidebar_background.png");
+	padding: 5px;
+	width: 415px;
+}
+
+#mainContent .item td:hover {
+	background: #dedede;
+	background-image: none;
+}
+
 #intro {
 	-moz-border-radius:22px 22px 22px 22px;
 	background:url("/images/intro_background.png") repeat-x scroll 0 0 #467612;
