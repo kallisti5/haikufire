@@ -13,7 +13,12 @@ body {
 	margin: 0 auto;
 	width: 940px;
 	font: 13px/22px Helvetica, Arial, sans-serif;
-	background: #f0f0f0;
+	background: #2B4C7E;
+	color: #fff;
+}
+
+a {
+	color: #DBF70C;
 }
 
 h2 {
@@ -77,19 +82,21 @@ nav ul li.selected a {
 	display: table-cell;
 	width: 620px;
 	padding-right: 22px;
-	padding-top: 60px;
 	padding-bottom:25px;
+	padding-top: 40px;
 }
 
 #mainContent .item td {
+	border-left: 1px solid #567ebb;
+	background-position:-1px 0;
+	background-repeat:repeat-y;
 	background-image:url("/images/sidebar_background.png");
 	padding: 5px;
 	width: 415px;
 }
 
 #mainContent .item td:hover {
-	background: #dedede;
-	background-image: none;
+	border-left: 1px solid #DBF70C;
 }
 
 #intro {
@@ -116,17 +123,31 @@ nav ul li.selected a {
 	line-height:1.2em;
 }
 
+
+aside .donate img {
+	vertical-align:	middle;
+}
+
 aside {
-	background:url("/images/sidebar_background.png") repeat scroll left top transparent;
+	background:url("/images/sidebar_background.png") repeat-y scroll left top transparent;
 	display:table-cell;
 	width:300px;
+}
+
+aside div {
+	-moz-border-radius:15px 15px 15px 15px;
+	border-color:#1F1F20 #567EBB #567EBB #1F1F20;
+	border-style:solid;
+	border-width:1px;
+	margin-left:15px;
+	padding:5px;
 }
 
 footer {
 	position: absolute;
 	left: 0;
 	width: 100%;
-	background: #222;
+	background: #1F1F20;
 	color: white;
 }
 
