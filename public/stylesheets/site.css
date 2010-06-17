@@ -66,6 +66,7 @@ nav ul li a:hover {
 
 nav ul li.selected a {
 	color: #fff;
+	text-shadow:0 0 8px #F0B81F;
 }
 
 #content {
@@ -111,7 +112,8 @@ nav ul li.selected a {
 
 #intro .detail {
 	margin-left:20px;
-	margin-top:4px;
+	margin-top:8px;
+	line-height:1.2em;
 }
 
 aside {
