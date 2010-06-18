@@ -1,5 +1,12 @@
+
 <% @twitter_timelines.each do |item| %>
 
-	<%= item.text %><br/>
+	<table class='item'>
+		<tr>
+		<th> <%= image_tag "/images/icons/tweet.png" %> </th>
+		<td> <span style='border-bottom: 1px solid #567EBB;'>Tweet from Haikufire on <%= item.created_at %> </span><br/>
+		<div style='font-size: 0.8em;'><%= item.text %></div> </td>
+		</tr>
+	</table>
 
 <% end %>

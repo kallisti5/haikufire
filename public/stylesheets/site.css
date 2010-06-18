@@ -83,7 +83,7 @@ nav ul li.selected a {
 	width: 620px;
 	padding-right: 22px;
 	padding-bottom:25px;
-	padding-top: 40px;
+	padding-top: 60px;
 }
 
 #mainContent .item td {
@@ -106,8 +106,10 @@ nav ul li.selected a {
 	background:url("/images/intro.png") repeat-x scroll 0 0 #467612;
 	border:1px solid black;
 	margin-top:66px;
+	/* offset the margin needed for the titlebar */
+	margin-bottom:-40px;
 	padding:44px;
-	height: 300px;
+	height: 220px;
 	position:relative;
 	color: #fff;
 	text-shadow: 1px 1px 2px black;
@@ -131,7 +133,9 @@ aside .donate img {
 aside {
 	background:url("/images/sidebar_background.png") repeat-y scroll left top transparent;
 	display:table-cell;
+	vertical-align:top;
 	width:300px;
+	padding-top: 60px;
 }
 
 aside div {
