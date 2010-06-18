@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20100615162814) do
 
   create_table "softwares", :force => true do |t|
     t.string  "title"
-    t.integer "category"
+    t.integer "category_id"
     t.text    "description"
     t.string  "author"
     t.string  "license"
