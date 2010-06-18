@@ -14,8 +14,8 @@ class CategoryController < ApplicationController
   # GET /categories/1.xml
   def show
 
-    @category = Category.find(:first, :conditions => "name = '#{params[:id]}'")
-    @softwares = Software.find(:all, :conditions => "category_id = '#{@category.id}'")
+    @category = Category.find(:first, :conditions => {:name => params[:id]})
+    @softwares = Software.find(:all, :conditions => {:category_id => @category.id})
 
     respond_to do |format|
       format.html # show.html.erb
