@@ -1,6 +1,19 @@
 <h3><%=h @category.name %></h3>
-<p style='margin-left: 5px;'><%= @category.description %></p>
+<div class='description'><%= @category.description %></div>
 
-<%= debug(@category) %>
+<% @softwares.each do |software| %>
 
+        <table class='item'>
+                <tr>
+                <th> <%= image_tag "/images/icons/generic.png" %> </th>
+                <td> <span style='border-bottom: 1px solid #567EBB;'>
+                        <%= link_to software.title, "/application/" << software.title %>
+		<span style='font-size: 0.8em;'> by <%= software.author %></span> </span>
+                <div style='font-size: 0.8em;'><%= software.description %></div> </td>
+                </tr>
+        </table>
+
+<% end %>
+
+<br/><hr/>Debug stuffs...<br/>
 <%= debug(@softwares) %>

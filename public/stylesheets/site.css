@@ -77,10 +77,12 @@ nav ul li.selected a {
 
 #content {
 	display: table;
+	vertical-align:top;
 }
 
 #mainContent {
 	display: table-cell;
+	vertical-align:top;
 	width: 620px;
 	padding-right: 22px;
 	padding-bottom:25px;
@@ -124,6 +126,11 @@ nav ul li.selected a {
 	margin-left:20px;
 	margin-top:8px;
 	line-height:1.2em;
+}
+
+.description {
+	margin-left: 5px;
+	margin-bottom: 10px;
 }
 
 
