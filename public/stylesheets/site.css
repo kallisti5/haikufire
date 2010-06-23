@@ -128,6 +128,16 @@ nav ul li.selected a {
 	line-height:1.2em;
 }
 
+.alert {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background:url(/images/icons/alert.png) repeat-y scroll 5px 0 #567EBB;
+	color:#FFFFFF;
+	font-weight:bold;
+	padding:10px 10px 10px 50px;
+}
+
 .description {
 	margin-left: 5px;
 	margin-bottom: 10px;
