@@ -12,7 +12,7 @@
 	<nav>
 		<ul> 
 			<li <%= "class='selected'" if controller_name=="news" %>><a href="/news">News</a></li> 
-			<li <%= "class='selected'" if controller_name=="category" %>><a href="/category">Software</a></li> 
+			<li <%= "class='selected'" if controller_name=="category" || controller_name=="software" %>><a href="/category">Software</a></li> 
 			<li <%= "class='selected'" if controller_name=="about" %>><a href="/about">About</a></li> 
 		</ul> 
 	</nav>

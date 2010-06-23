@@ -17,6 +17,12 @@ class CreateSoftwares < ActiveRecord::Migration
 			:license => "GPL",
 			:type => "Native"
 
+       Software.create  :title => "Test application II",
+                        :category_id => 1,
+                        :description => "Test development software item",
+                        :author => "Jose fancy-pants",
+                        :license => "GPL",
+                        :type => "Compatible"
   end
 
   def self.down
