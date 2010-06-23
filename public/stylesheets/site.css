@@ -135,7 +135,9 @@ nav ul li.selected a {
 	background:url(/images/icons/alert.png) repeat-y scroll 5px 0 #567EBB;
 	color:#FFFFFF;
 	font-weight:bold;
+	text-shadow: 1px 1px 1px #000;
 	padding:10px 10px 10px 50px;
+	margin:15px;
 }
 
 .description {
