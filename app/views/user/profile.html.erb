@@ -1,0 +1,17 @@
+
+<table style='width: 98%;'  class='block-box'>
+<tr>
+<td style='text-align: center; padding: 10px; width:30%; vertical-align: top;'>
+<%= image_tag "http://www.gravatar.com/avatar/#{@email_hash}" %><br/>
+<%= @user.name %>
+</td>
+
+<td style='width: 70%; vertical-align: top;'>
+<table style='width:100%;'>
+<tr><td style='width: 25%;'><b>Username:</b></td><td><%= @user.login %></td></tr>
+<tr><td style='width: 25%;'><b>Role:</b></td><td><%= decode_user_role(@user.role) %></td></tr>
+<tr><td style='width: 25%;'><b>Member Since:</b></td><td><%= @user.created_at %></td></tr>
+</table>
+</td>
+</tr>
+</table>

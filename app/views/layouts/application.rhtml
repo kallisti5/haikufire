@@ -8,6 +8,14 @@
 <body>
 	<header>
 		<%= image_tag "/images/toplogo.png" %>
+		<div style='float: right;'>
+		<% if !session[:user_id] %>
+		Welcome Anonymous user! | <a href='/user/login'>Login</a>
+		<% else %>
+		Welcome back <%= link_to session[:user_id], "/user/profile/#{session[:user_id]}"%> | <a href='/user/logout'>Logout</a>
+		<% end %>
+		</div>
+		
 	</header>
 	<nav>
 		<ul> 
@@ -33,12 +41,12 @@
 		</div>
 
 	<aside>
-		<div id='sideblock' class='donate'>
+		<div id='sideblock' class='block-box'> 
 		<%= image_tag "/images/icons/donate.png" %>
 		<a href='http://www.haiku-os.org/community/donating_to_haiku' target='_blank'>Donate to the Haiku project</a>
 		</div>
 
-		<div id='sideblock'>
+		<div id='sideblock' class='block-box'>
 		<%= image_tag "/images/icons/new.png" %> Recent software additions</br>
 		<ul>
 		<li>Tommy in internet land</li>
