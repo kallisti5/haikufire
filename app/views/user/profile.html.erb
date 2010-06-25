@@ -10,7 +10,7 @@
 <table style='width:100%;'>
 <tr><td style='width: 25%;'><b>Username:</b></td><td><%= @user.login %></td></tr>
 <tr><td style='width: 25%;'><b>Role:</b></td><td><%= decode_user_role(@user.role) %></td></tr>
-<tr><td style='width: 25%;'><b>Member Since:</b></td><td><%= @user.created_at %></td></tr>
+<tr><td style='width: 25%;'><b>Member Since:</b></td><td><%= Date::MONTHNAMES[@user.created_at.month] %>, <%= @user.created_at.year%></td></tr>
 </table>
 </td>
 </tr>
