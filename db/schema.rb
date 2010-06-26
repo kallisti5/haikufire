@@ -17,13 +17,15 @@ ActiveRecord::Schema.define(:version => 20100625141640) do
   end
 
   create_table "softwares", :force => true do |t|
-    t.string  "title"
-    t.integer "category_id"
-    t.text    "description"
-    t.string  "author"
-    t.string  "license"
-    t.string  "type"
-    t.binary  "icon"
+    t.string   "title"
+    t.integer  "category_id"
+    t.datetime "created"
+    t.datetime "updated"
+    t.text     "description"
+    t.string   "author"
+    t.string   "license"
+    t.string   "type"
+    t.binary   "icon"
   end
 
   create_table "users", :force => true do |t|
