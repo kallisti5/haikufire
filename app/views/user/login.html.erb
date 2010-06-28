@@ -4,11 +4,13 @@
 </div>
 <% end %>
 
-<!--creates form, exectues the authenticate method when the submit button is clicked-->
 <%= form_tag :action=>'authenticate' %>
-User name:
-<%= text_field("userform", "login",:size=>"20" ) %>
-Password:
-<%= password_field("userform", "password",:size=>"20" )
-%>
-<input type="submit" value=" LOGIN " />
+<table class='block-box' style='padding: 25px; margin: auto;'>
+<tr><td COLSPAN=2 style='text-align: right; font-size: 10px;'>
+<%= link_to "New user?", "/user/new"%> | <%= link_to "Forgot password?", "/user/recover"%></td></tr>
+<tr><td>User name:</td>
+<td><%= text_field("userform", "login",:size=>"20" ) %></td></tr>
+<tr><td>Password:</td>
+<td><%= password_field("userform", "password",:size=>"20" )%> </td></tr>
+<tr><td COLSPAN=2 style='text-align: right;'><input type="submit" value=" LOGIN " /></td></tr>
+</table>
