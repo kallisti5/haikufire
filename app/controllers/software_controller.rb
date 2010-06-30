@@ -3,7 +3,7 @@ class SoftwareController < ApplicationController
   # GET /categories/1.xml
   def show
 
-    @software = Software.find(:all, :conditions => {:title => params[:id]})
+    @software = Software.find(:first, :conditions => {:title => params[:id]})
 
     respond_to do |format|
       format.html # show.html.erb
