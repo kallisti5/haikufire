@@ -1,6 +1,6 @@
 <%= debug(@user) %>
 
-<% form_for @user do |f| %>
+<% form_for @user, :url => { :action => "create" }  do |f| %>
 
 
   <p>
