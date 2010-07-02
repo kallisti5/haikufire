@@ -7,7 +7,7 @@
 <%= form_tag :action=>'authenticate' %>
 <table class='block-box' style='padding: 25px; margin: auto;'>
 <tr><td COLSPAN=2 style='text-align: right; font-size: 10px;'>
-<%= link_to "New user?", "/user/new"%> | <%= link_to "Forgot password?", "/user/recover"%></td></tr>
+<%= link_to "New user?", "/users/new"%> | <%= link_to "Forgot password?", "/users/recover"%></td></tr>
 <tr><td>User name:</td>
 <td><%= text_field("userform", "login",:size=>"20" ) %></td></tr>
 <tr><td>Password:</td>
