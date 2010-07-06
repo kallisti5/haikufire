@@ -1,7 +1,9 @@
-<%= debug(@user) %>
-
 <% form_for @user, :url => { :action => "create" }  do |f| %>
 
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
 
   <p>
     <%= f.label :login %><br />
@@ -9,8 +11,8 @@
   </p>
 
   <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :password %><br />
+    <%= f.password_field :password, {:value => ''} %>
   </p>
 
   <p>
@@ -19,4 +21,4 @@
   </p>
 
       <%= submit_tag 'Create' %>
-    <% end %>
+<% end %>
