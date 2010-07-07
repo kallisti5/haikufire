@@ -5,6 +5,9 @@ class UsersController < ApplicationController
   end
 
   def login
+    respond_to do |format|
+      format.html # login.html.erb
+    end
   end
 
   def authenticate
@@ -52,13 +55,14 @@ class UsersController < ApplicationController
     @user = User.new
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @testtest }
+      format.xml  { render :xml => @user }
     end
   end
 
   def success
 
   end
+
 
   def create
 
@@ -69,7 +73,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-	format.html { redirect_to :action => 'profile', :id => @user.login }
+	#format.html { redirect_to :action => 'profile', :id => @user.login }
+	format.html { redirect_to :action => 'login' }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }

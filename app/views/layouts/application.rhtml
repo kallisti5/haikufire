@@ -10,9 +10,9 @@
 		<%= image_tag "/images/toplogo.png" %>
 		<div style='float: right;'>
 		<% if !session[:user_id] %>
-		Welcome Anonymous user! | <a href='/users/login'>Login</a>
+		Welcome Anonymous user! | <%= link_to "Login", :login %>
 		<% else %>
-		Welcome back <%= link_to session[:user_id], "/users/profile/#{session[:user_id]}"%> | <a href='/users/logout'>Logout</a>
+		Welcome back <%= link_to session[:user_id], "/users/profile/#{session[:user_id]}"%> | <%= link_to "Logout", :logout %>
 		<% end %>
 		</div>
 		

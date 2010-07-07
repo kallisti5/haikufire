@@ -1,4 +1,7 @@
-<% form_for @user, :url => { :action => "create" }  do |f| %>
+<%= debug(@user) %>
+
+<% #form_for @user, :url => { :action => "create" }  do |f| %>
+<% form_for(@user) do |f| %>
 
   <p>
     <%= f.label :name %><br />
