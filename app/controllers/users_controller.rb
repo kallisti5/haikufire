@@ -16,24 +16,29 @@ class UsersController < ApplicationController
 	#User.new(params[:userform]) will create a new object of User, retrieve values from the form and store it variable @user.
 	@user = User.new(params[:userform])
 
-	# Lets not give away plaintext passwords... mmkay?
-	pass_digest = Digest::MD5.hexdigest(@user.password)
-	
-	valid_user = User.find(:first,:conditions => ["login = ? and password = ?",@user.login, pass_digest])
-
-	if valid_user
-		#creates a session with username
-		session[:user_id]=valid_user.login
-
-		# update last login time
-		valid_user.last_login = Time.now
-		valid_user.save
-
-		#redirects the user to our private page.
-		redirect_to :action => 'profile', :id => @user.login
+	if !@user.login or !@user.password
+		flash[:notice] = "Please provide a login and a password"
+		redirect_to :action => 'login'
 	else
-		flash[:notice] = "Invalid User/Password"
-		redirect_to :action=> 'login'
+		# Lets not give away plaintext passwords... mmkay?
+		pass_digest = Digest::MD5.hexdigest(@user.password)
+		
+		valid_user = User.find(:first,:conditions => ["login = ? and password = ?",@user.login, pass_digest])
+
+		if valid_user
+			#creates a session with username
+			session[:user_id]=valid_user.login
+
+			# update last login time
+			valid_user.last_login = Time.now
+			valid_user.save
+
+			#redirects the user to our private page.
+			redirect_to :action => 'profile', :id => @user.login
+		else
+			flash[:notice] = "Invalid User/Password"
+			redirect_to :action=> 'login'
+		end
 	end
   end
 
