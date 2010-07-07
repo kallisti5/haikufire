@@ -35,6 +35,12 @@
 	<div id="content"> 
 		<div id="mainContent"> 
 	<section>
+		<% if flash[:notice] %>
+		<div id='errorExplanation'>
+		<%= flash[:notice] %>
+		</div>
+		<% end %>
+
 		<!-- Main content area -->
 		<%= yield %>
 	</section>
