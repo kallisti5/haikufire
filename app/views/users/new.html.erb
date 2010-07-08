@@ -1,22 +1,37 @@
+<table class='block-box' style='padding: 25px; margin: auto;'>
+<tr><td COLSPAN=2 style='font-size: 18px; padding-bottom: 10px;'>
+<%= image_tag '/images/icons/32x32/user_add.png', :style => "vertical-align:middle" %> New user</td></tr>
+
 <% form_for(@user) do |f| %>
 <%= f.error_messages %>
-  <div class="field">
-    <%= f.label :name %><br />
+  <tr><td>
+    <%= f.label :name %>
+  </td><td>
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
+  </td></tr>
+
+  <tr><td>
+    <%= f.label :email %>
+  </td><td>
     <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :login %><br />
+  </td></tr>
+
+  <tr><td>
+    <%= f.label :login %>
+  </td><td>
     <%= f.text_field :login %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
+  </td></tr>
+
+  <tr><td>
+    <%= f.label :password %>
+  </td><td>
     <%= f.password_field :password, {:value => ''} %>
-  </div>
-  <div class="actions">
+  </td></tr>
+
+  <tr><td COLSPAN=2 style='text-align: right;'>
     <%= f.submit "Create" %>
-  </div>
+  </td></tr>
+
 <% end %>
+
+</table>
