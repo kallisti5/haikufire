@@ -132,11 +132,11 @@ nav ul li.selected a {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	background:url(/images/icons/alert.png) repeat-y scroll 5px 0 #567EBB;
+	background:url(/images/icons/32x32/exclamation.png) no-repeat scroll 5px 5px #567EBB;
 	color:#FFFFFF;
 	font-weight:bold;
 	text-shadow: 1px 1px 1px #000;
-	padding:10px 10px 10px 50px;
+	padding:10px 10px 10px 45px;
 	margin:15px;
 }
 
