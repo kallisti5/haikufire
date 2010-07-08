@@ -7,6 +7,7 @@ class CreateSoftwares < ActiveRecord::Migration
       t.timestamp	:updated
       t.text		:description
       t.string		:author
+      t.string		:version
       t.string		:license
       t.string		:type
       t.binary		:icon
@@ -17,6 +18,7 @@ class CreateSoftwares < ActiveRecord::Migration
 			:description => "Test software item",
 			:author => "Jose fancy-pants",
 			:license => "GPL",
+			:version => "1.0",
 			:created => Time.parse("5/20"),
 			:updated => Time.parse("5/24"),
 			:type => "Native"
@@ -26,6 +28,7 @@ class CreateSoftwares < ActiveRecord::Migration
                         :description => "Test development software item",
                         :author => "Jose fancy-pants",
                         :license => "GPL",
+			:version => "r102",
                         :created => Time.now,
                         :updated => Time.now,
                         :type => "Compatible"

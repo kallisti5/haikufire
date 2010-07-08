@@ -217,3 +217,14 @@ footer div {
 .fieldWithErrors input {
 	background-color: #ff9999;
 }
+
+#softwareDetails {
+	width:100%;
+}
+
+#softwareDetails td {
+	vertical-align: top;
+}
+
+#softwareDetails tr:nth-child(odd)    { background-color:#325994; }
+#softwareDetails tr:nth-child(even)    { background-color:#26426e; }

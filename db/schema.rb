@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20100625141640) do
     t.datetime "updated"
     t.text     "description"
     t.string   "author"
+    t.string   "version"
     t.string   "license"
     t.string   "type"
     t.binary   "icon"
