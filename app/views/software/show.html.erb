@@ -2,6 +2,8 @@
 <h3><%= @software.title %></h3>
 <div class='description'>by <%= @software.author %> </div>
 
+<%= image_tag "/images/blank_screenshot.png", :id => 'softwareShot' %>
+
 <table id='softwareDetails'>
 <tr>
 <td><%= image_tag '/images/icons/16x16/calendar_add.png', :style => 'vertical-align:middle;' %> Added </td>
@@ -12,8 +14,8 @@
 <td><%= @software.license %></td>
 </tr>
 <tr>
-<td><%= image_tag '/images/icons/16x16/script.png', :style => 'vertical-align:middle;' %> Type </td>
-<td><%= @software.type %></td>
+<td><%= image_tag '/images/icons/16x16/arrow_divide.png', :style => 'vertical-align:middle;' %> Compiled </td>
+<td><%= image_tag "/images/icons/icon_#{@software.compiled.downcase}.png" , :style => 'vertical-align: text-top;' %> <%= @software.compiled %></td>
 </tr>
 <tr>
 <td><%= image_tag '/images/icons/16x16/page.png', :style => 'vertical-align:middle;' %> Description </td>

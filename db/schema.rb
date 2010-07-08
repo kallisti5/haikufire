@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20100625141640) do
     t.string   "author"
     t.string   "version"
     t.string   "license"
-    t.string   "type"
+    t.string   "compiled"
     t.binary   "icon"
   end
 

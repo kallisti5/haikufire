@@ -218,8 +218,14 @@ footer div {
 	background-color: #ff9999;
 }
 
+#softwareShot {
+	float: left;
+	padding: 1px;
+	margin-right: 5px;
+}
+
 #softwareDetails {
-	width:100%;
+	width:75%;
 }
 
 #softwareDetails td {

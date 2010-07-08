@@ -9,7 +9,7 @@ class CreateSoftwares < ActiveRecord::Migration
       t.string		:author
       t.string		:version
       t.string		:license
-      t.string		:type
+      t.string		:compiled
       t.binary		:icon
     end
 
@@ -21,7 +21,7 @@ class CreateSoftwares < ActiveRecord::Migration
 			:version => "1.0",
 			:created => Time.parse("5/20"),
 			:updated => Time.parse("5/24"),
-			:type => "Native"
+			:compiled => "Native"
 
        Software.create  :title => "Test application II",
                         :category_id => 1,
@@ -31,7 +31,7 @@ class CreateSoftwares < ActiveRecord::Migration
 			:version => "r102",
                         :created => Time.now,
                         :updated => Time.now,
-                        :type => "Compatible"
+                        :compiled => "Compatible"
   end
 
   def self.down
