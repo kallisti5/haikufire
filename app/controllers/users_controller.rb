@@ -11,19 +11,15 @@ class UsersController < ApplicationController
   end
 
   def authenticate
-	require 'digest/md5'
 
-	#User.new(params[:userform]) will create a new object of User, retrieve values from the form and store it variable @user.
 	@user = User.new(params[:userform])
 
 	if !@user.login or !@user.password
-		flash[:notice] = "Please provide a login and a password"
+		flash[:warning] = "Please provide a login and a password"
 		redirect_to :action => 'login'
 	else
-		# Lets not give away plaintext passwords... mmkay?
-		pass_digest = Digest::MD5.hexdigest(@user.password)
-		
-		valid_user = User.find(:first,:conditions => ["login = ? and password = ?",@user.login, pass_digest])
+		# @user.password is converted to an md5 hash in the model code
+		valid_user = User.find(:first,:conditions => ["login = ? and password = ?",@user.login, @user.password]) 
 
 		if valid_user
 			#creates a session with username
@@ -36,7 +32,7 @@ class UsersController < ApplicationController
 			#redirects the user to our private page.
 			redirect_to :action => 'profile', :id => @user.login
 		else
-			flash[:notice] = "Invalid User/Password"
+			flash[:warning] = "Invalid User/Password"
 			redirect_to :action=> 'login'
 		end
 	end
@@ -53,6 +49,7 @@ class UsersController < ApplicationController
 	require 'digest/md5'
 
 	@user = User.find(:first, :conditions => { :login => params[:id] } )
+	# convert email into md5 hash for gravatar
 	@email_hash = Digest::MD5.hexdigest(@user.email.downcase)
   end
 
@@ -79,6 +76,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
 	#format.html { redirect_to :action => 'profile', :id => @user.login }
+	MailWorker::deliver_verification(@user.email)
+	flash[:info] = "User creation successful, please validate your email before logging in."
 	format.html { redirect_to :action => 'login' }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
@@ -87,7 +86,6 @@ class UsersController < ApplicationController
       end
     end
   end
-
 
   def update
   end

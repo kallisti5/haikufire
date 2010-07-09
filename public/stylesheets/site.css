@@ -208,6 +208,17 @@ footer div {
 	margin-bottom:15px;
 }
 
+#infoExplanation {
+	background-color: #A7B323;
+	border: 1px solid #00ff00;
+	padding:15px;
+	text-shadow: 1px 1px 1px #000;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+	margin-bottom:15px;
+}
+
 
 .fieldWithErrors label {
 	color: #ffdddd;

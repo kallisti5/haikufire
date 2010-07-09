@@ -35,11 +35,17 @@
 	<div id="content"> 
 		<div id="mainContent"> 
 	<section>
-		<% if flash[:notice] %>
+		<% if flash[:warning] %>
 		<div id='errorExplanation'>
-		<%= flash[:notice] %>
+		<%= flash[:warning] %>
 		</div>
 		<% end %>
+
+                <% if flash[:info] %>
+                <div id='infoExplanation'>
+                <%= flash[:info] %>
+                </div>
+                <% end %>
 
 		<!-- Main content area -->
 		<%= yield %>

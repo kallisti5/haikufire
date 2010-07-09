@@ -44,3 +44,12 @@ end
 
 # correct stupid rails error div to a span
 ActionView::Base.field_error_proc = Proc.new { |html_tag, instance|"<span class=\"fieldWithErrors\">#{html_tag}</span>" }
+
+# set mailer
+ActionMailer::Base.delivery_method = :smtp
+
+ActionMailer::Base.smtp_settings = {
+   :address => "localhost",
+   :port => 25,
+   :domain => "haikufire.com",
+}
