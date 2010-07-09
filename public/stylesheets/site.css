@@ -241,6 +241,7 @@ footer div {
 
 #softwareDetails td {
 	vertical-align: top;
+	padding: 5px;
 }
 
 #softwareDetails tr:nth-child(odd)    { background-color:#325994; }

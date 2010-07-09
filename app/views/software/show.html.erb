@@ -1,16 +1,22 @@
 <% if @software != nil %>
 <h3><%= @software.title %></h3>
-<div class='description'>by <%= @software.author %> </div>
+<div class='description'>version <%= @software.version %> </div>
+
+<div class='block-box'>
 
 <%= image_tag "/images/blank_screenshot.png", :id => 'softwareShot' %>
 
 <table id='softwareDetails'>
 <tr>
-<td style='width: 25%;'><%= image_tag '/images/icons/16x16/calendar_add.png', :style => 'vertical-align:middle;' %> Added </td>
+<td style='width: 90px;'><%= image_tag '/images/icons/16x16/vcard.png', :style => 'vertical-align:middle;' %> Author </td>
+<td><%= @software.author %></td>
+</tr>
+<tr>
+<td><%= image_tag '/images/icons/16x16/calendar_add.png', :style => 'vertical-align:middle;' %> Added </td>
 <td><%= @software.created %></td>
 </tr>
 <tr>
-<td><%= image_tag '/images/icons/16x16/script.png', :style => 'vertical-align:middle;' %> License </td>
+<td><%= image_tag '/images/icons/16x16/text_signature.png', :style => 'vertical-align:middle;' %> License </td>
 <td><%= @software.license %></td>
 </tr>
 <tr>
@@ -22,6 +28,7 @@
 <td><%= @software.description %></td>
 </tr>
 </table>
+</div>
 
 <%= debug(@software) %>
 <% else %>
