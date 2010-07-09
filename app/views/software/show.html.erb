@@ -6,7 +6,7 @@
 
 <table id='softwareDetails'>
 <tr>
-<td><%= image_tag '/images/icons/16x16/calendar_add.png', :style => 'vertical-align:middle;' %> Added </td>
+<td style='width: 25%;'><%= image_tag '/images/icons/16x16/calendar_add.png', :style => 'vertical-align:middle;' %> Added </td>
 <td><%= @software.created %></td>
 </tr>
 <tr>
@@ -15,7 +15,7 @@
 </tr>
 <tr>
 <td><%= image_tag '/images/icons/16x16/arrow_divide.png', :style => 'vertical-align:middle;' %> Compiled </td>
-<td><%= image_tag "/images/icons/icon_#{@software.compiled.downcase}.png" , :style => 'vertical-align: text-top;' %> <%= @software.compiled %></td>
+<td><%= image_tag "/images/icons/icon_#{@software.compiled.downcase}.png" , :style => 'vertical-align: top;' %></td>
 </tr>
 <tr>
 <td><%= image_tag '/images/icons/16x16/page.png', :style => 'vertical-align:middle;' %> Description </td>
