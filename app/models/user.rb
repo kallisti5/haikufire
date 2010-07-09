@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 
 	validates_presence_of :password, :message => 'must be greater then 4 characters'
 
+	apply_simple_captcha
 
 	def password=(password)
 		if password.length > 4

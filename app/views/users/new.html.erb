@@ -28,6 +28,10 @@
     <%= f.password_field :password, {:value => ''} %>
   </td></tr>
 
+  <tr><td COLSPAN=2 style='height: 20px;'></td></tr>
+
+  <%= show_simple_captcha(:object => "user", :image_style => 'almost_invisible')%>
+
   <tr><td COLSPAN=2 style='text-align: right;'>
     <%= f.submit "Create" %>
   </td></tr>

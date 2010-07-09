@@ -68,23 +68,24 @@ class UsersController < ApplicationController
 
   def create
 
-    @user = User.new(params[:user])
+      @user = User.new(params[:user])
 
-    @user.role = 2
-    @user.created_at = Time.now
+      @user.role = 2
+      @user.created_at = Time.now
 
-    respond_to do |format|
-      if @user.save
-	#format.html { redirect_to :action => 'profile', :id => @user.login }
-	MailWorker::deliver_verification(@user.email)
-	flash[:info] = "User creation successful, please validate your email before logging in."
-	format.html { redirect_to :action => 'login' }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @user.save_with_captcha
+          #format.html { redirect_to :action => 'profile', :id => @user.login }
+          MailWorker::deliver_verification(@user.email)
+          flash[:info] = "User creation successful, please validate your email before logging in."
+          format.html { redirect_to :action => 'login' }
+          format.xml  { render :xml => @user, :status => :created, :location => @user }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        end
       end
-    end
+
   end
 
   def update

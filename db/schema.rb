@@ -9,11 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100625141640) do
+ActiveRecord::Schema.define(:version => 20100709164830) do
 
   create_table "categories", :force => true do |t|
     t.string "name"
     t.text   "description"
+  end
+
+  create_table "simple_captcha_data", :force => true do |t|
+    t.string   "key",        :limit => 40
+    t.string   "value",      :limit => 6
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "softwares", :force => true do |t|
