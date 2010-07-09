@@ -77,7 +77,7 @@ class UsersController < ApplicationController
         if @user.save_with_captcha
           #format.html { redirect_to :action => 'profile', :id => @user.login }
           MailWorker::deliver_verification(@user.email)
-          flash[:info] = "User creation successful, please validate your email before logging in."
+          flash[:info] = "User creation successful.<br/>You will need to click the verification link in the email sent to #{@user.email} before logging in."
           format.html { redirect_to :action => 'login' }
           format.xml  { render :xml => @user, :status => :created, :location => @user }
         else
