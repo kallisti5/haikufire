@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20100709164830) do
     t.integer  "role"
     t.datetime "created_at"
     t.datetime "last_login"
+    t.string   "validation_hash"
     t.datetime "updated_at"
   end
 

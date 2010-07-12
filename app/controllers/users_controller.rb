@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 		# @user.password is converted to an md5 hash in the model code
 		valid_user = User.find(:first,:conditions => ["login = ? and password = ?",@user.login, @user.password]) 
 
-		if valid_user
+		if valid_user and valid_user.role != 99
 			#creates a session with username
 			session[:user_id]=valid_user.login
 
@@ -70,20 +70,53 @@ class UsersController < ApplicationController
 
       @user = User.new(params[:user])
 
-      @user.role = 2
+      # role 0  = Site Admin
+      # role 1  = Privledged user
+      # role 2  = Normal user
+      # role 99 = Unverified user
+
+      @user.role = 99
       @user.created_at = Time.now
+
+      @user.validation_hash = randomhash(64)
 
       respond_to do |format|
         if @user.save_with_captcha
           #format.html { redirect_to :action => 'profile', :id => @user.login }
-          MailWorker::deliver_verification(@user.email)
-          flash[:info] = "User creation successful.<br/>You will need to click the verification link in the email sent to #{@user.email} before logging in."
+          MailWorker::deliver_verification(@user.email, @user.validation_hash)
+          flash[:info] = "User creation successful. An email has been sent to #{@user.email}.<br/>Please click the validation link in the sent email before logging in."
           format.html { redirect_to :action => 'login' }
           format.xml  { render :xml => @user, :status => :created, :location => @user }
         else
           format.html { render :action => "new" }
           format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
         end
+      end
+
+  end
+
+  # url to confirm email validation
+  def validate
+      validation_hash = params[:id]
+
+      # ensure hash looks proper
+      if validation_hash.length == 64
+         user = User.find(:first, :conditions => ["role = 99 and validation_hash = ?", validation_hash ])
+      else
+         user = nil
+      end
+
+      if user
+         user.role = 2
+         user.validation_hash = ""
+         user.save
+         flash[:info] = "User validation successful, thanks for registering #{user.login}!<br/>You may now login."
+      else
+         flash[:warning] = "User validation was un-successful, invalid validation token passed."
+      end
+
+      respond_to do |format|
+        format.html { redirect_to :action => 'login' }
       end
 
   end

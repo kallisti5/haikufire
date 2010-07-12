@@ -1,13 +1,14 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
-      t.string :login
-      t.string :password
-      t.string :name
-      t.string :email
-      t.integer :role
-      t.timestamp :created_at
-      t.timestamp :last_login
+      t.string :login		# user login
+      t.string :password	# md5 of user password
+      t.string :name		# user real name
+      t.string :email		# user email
+      t.integer :role		# user role, 0=site admin, 1=super admin, 2=user, 99=unvalidated
+      t.timestamp :created_at	# user join date
+      t.timestamp :last_login	# user last login
+      t.string :validation_hash	# validation hash used for new user registration
 
       t.timestamps
     end

@@ -1,6 +1,7 @@
 class MailWorker < ActionMailer::Base
   
-   def verification(recipient, sent_at = Time.now)
+   def verification(recipient, validation_hash, sent_at = Time.now)
+      @validation_hash = validation_hash
       @subject = subject
       @recipients = recipient
       @from = 'MailWorker@haikufire.com'
