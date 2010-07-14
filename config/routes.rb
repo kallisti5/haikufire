@@ -3,6 +3,8 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => "news"
 
   map.resources :users
+  map.resources :softwares
+
   map.login '/auth/login', :controller => 'users', :action => 'login'
   map.logout '/auth/logout', :controller => 'users', :action => 'logout'
 
