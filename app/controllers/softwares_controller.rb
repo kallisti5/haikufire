@@ -12,7 +12,9 @@ class SoftwaresController < ApplicationController
 
   def new
     if session[:user_id] && session[:user_id] != 99
-      @software= Software.new
+      @software = Software.new
+
+      @categories = Category.find(:all, :order => "name")
 
       respond_to do |format|
         format.html # new.html.erb

@@ -28,6 +28,11 @@
     <%= f.text_field :license %>
   </td></tr>
 
+  <tr><td>
+    <%= f.label :category_id %>
+  </td><td>
+    <%= collection_select("software", "category_id", @categories, :id, :name ) %>
+  </td></tr>
 
   <tr><td COLSPAN=2 style='text-align: right;'>
     <%= f.submit "Create" %>
