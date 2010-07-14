@@ -34,8 +34,6 @@ class SoftwaresController < ApplicationController
       # role 2  = Normal user
       # role 99 = Unverified user
 
-      @software.compiled = "Unknown"
-
       @software.created = Time.now
       @software.updated = Time.now
 

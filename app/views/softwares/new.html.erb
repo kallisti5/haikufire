@@ -25,13 +25,19 @@
   <tr><td>
     <%= f.label :license %>
   </td><td>
-    <%= f.text_field :license %>
+    <%= select("software", "license", ["Apache","Apple","Artistic","Boost","BSD","CDDL","eCos","Educational","GNU","GPL","MIT","Other","Public Domain"]) %>
   </td></tr>
 
   <tr><td>
     <%= f.label :category_id %>
   </td><td>
     <%= collection_select("software", "category_id", @categories, :id, :name ) %>
+  </td></tr>
+
+  <tr><td>
+    <%= f.label :compiled %>
+  </td><td>
+    <%= select("software", "compiled", { "Native Haiku Application"=>"native", "Compatible Legacy BeOS Application" => "compatible"}) %>
   </td></tr>
 
   <tr><td COLSPAN=2 style='text-align: right;'>
