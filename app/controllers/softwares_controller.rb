@@ -11,15 +11,20 @@ class SoftwaresController < ApplicationController
   end
 
   def new
-    @software= Software.new
+    if session[:user_id] && session[:user_id] != 99
+      @software= Software.new
 
-    respond_to do |format|
-      format.html # new.html.erb
+      respond_to do |format|
+        format.html # new.html.erb
+      end
+    else
+      flash[:warning] = "Anonymous users cannot create new software entries.<br/>Please login or create a new user first."
+      redirect_to :controller => 'auth', :action => 'login'
     end
   end
 
   def create
-
+    if session[:user_id] && session[:user_id] != 99
       @software = Software.new(params[:software])
 
       # role 0  = Site Admin
@@ -35,14 +40,17 @@ class SoftwaresController < ApplicationController
       respond_to do |format|
         if @software.save
           flash[:info] = "Successfully created new entry."
-          format.html { redirect_to :action => 'softwares', :id => @software.title }
+          format.html { redirect_to :action => 'show', :id => @software.title }
           format.xml  { render :xml => @software, :status => :created, :location => @software }
         else
           format.html { render :action => "new" }
           format.xml  { render :xml => @sofware.errors, :status => :unprocessable_entity }
         end
       end
-
+    else
+      flash[:warning] = "Anonymous users cannot create new software entries.<br/>Please login or create a new user first."
+      redirect_to :controller => 'auth', :action => 'login'
+    end
   end
 
 
