@@ -31,13 +31,19 @@
   <tr><td>
     <%= f.label :category_id %>
   </td><td>
-    <%= collection_select("software", "category_id", @categories, :id, :name ) %>
+    <%= collection_select(:software, :category_id, @categories, :id, :name ) %>
   </td></tr>
 
   <tr><td>
     <%= f.label :compiled %>
   </td><td>
-    <%= select("software", "compiled", { "Native Haiku Application"=>"native", "Compatible Legacy BeOS Application" => "compatible"}) %>
+    <%= select(:software, :compiled, { "Native Haiku Application"=>"native", "Compatible Legacy BeOS Application" => "compatible"}) %>
+  </td></tr>
+
+  <tr><td>
+    <%= f.label :description %>
+  </td><td>
+    <%= text_area(:software, :description, :cols => 51, :rows => 15) %>
   </td></tr>
 
   <tr><td COLSPAN=2 style='text-align: right;'>

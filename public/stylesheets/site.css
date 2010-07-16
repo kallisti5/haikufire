@@ -158,6 +158,10 @@ nav ul li.selected a {
         margin-bottom: 15px;
 }
 
+.block-box td {
+	vertical-align: top;
+}
+
 
 aside img {
 	vertical-align:	middle;
