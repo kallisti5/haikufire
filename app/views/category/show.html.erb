@@ -10,10 +10,17 @@
 <% else %>
 
 	<% @softwares.each do |software| %>
+		<%
+			if FileTest.exists?("public/repo/#{software.id}/icon.png")
+				icon = "/repo/#{software.id}/icon.png";
+			else
+				icon = "/images/icons/generic.png";
+			end
+		%>
 	
 	        <table class='item'>
 	                <tr>
-	                <th> <%= image_tag "/images/icons/generic.png" %> </th>
+	                <th> <%= image_tag icon %> </th>
 	                <td> <span style='border-bottom: 1px solid #567EBB;'>
 	                        <%= link_to software.title, "/softwares/show/" << software.title %>
 			<span style='font-size: 0.8em;'> by <%= software.author %></span> </span>
