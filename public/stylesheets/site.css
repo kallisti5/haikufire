@@ -248,5 +248,10 @@ footer div {
 	padding: 5px;
 }
 
+#softwareDetails p {
+	margin: 0;
+	padding: 0;
+}
+
 #softwareDetails tr:nth-child(odd)    { background-color:#325994; }
 #softwareDetails tr:nth-child(even)    { background-color:#26426e; }

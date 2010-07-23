@@ -15,7 +15,10 @@ class CreateSoftwares < ActiveRecord::Migration
 
        Software.create  :title => "Test application",
                         :category_id => 1,
-			:description => "Test software item",
+			:description => "Test software item
+					* Produces test data
+					* Full of win
+					* Migrates cleanly through the usage of gray-skull",
 			:author => "Jose fancy-pants",
 			:license => "GPL",
 			:version => "1.0",
