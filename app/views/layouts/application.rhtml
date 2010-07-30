@@ -12,7 +12,7 @@
 		<% if !session[:user_id] %>
 		Welcome Anonymous user! | <%= link_to "Login", :login %>
 		<% else %>
-		Welcome back <%= link_to session[:user_id], "/users/profile/#{session[:user_id]}"%> | <%= link_to "Logout", :logout %>
+		Welcome back <%= link_to session[:user_login], "/users/profile/#{session[:user_login]}"%> | <%= link_to "Logout", :logout %>
 		<% end %>
 		</div>
 		
@@ -20,7 +20,7 @@
 	<nav>
 		<ul> 
 			<li <%= "class='selected'" if controller_name=="news" %>><a href="/news">News</a></li> 
-			<li <%= "class='selected'" if controller_name=="category" || controller_name=="software" %>><a href="/category">Software</a></li> 
+			<li <%= "class='selected'" if controller_name=="category" || controller_name=="softwares" %>><a href="/category">Software</a></li> 
 			<li <%= "class='selected'" if controller_name=="about" %>><a href="/about">About</a></li> 
 		</ul> 
 	</nav>

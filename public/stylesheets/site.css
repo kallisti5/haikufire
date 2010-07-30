@@ -143,6 +143,8 @@ nav ul li.selected a {
 .description {
 	margin-left: 5px;
 	margin-bottom: 10px;
+	font-family:sans-serif;
+	font-size:10px;
 }
 
 .block-box {
@@ -245,7 +247,7 @@ footer div {
 
 #softwareDetails td {
 	vertical-align: top;
-	padding: 5px;
+	padding: 2px;
 }
 
 #softwareDetails p {

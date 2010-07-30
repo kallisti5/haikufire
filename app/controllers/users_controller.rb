@@ -23,7 +23,8 @@ class UsersController < ApplicationController
 
 		if valid_user and valid_user.role != 99
 			#creates a session with username
-			session[:user_id]=valid_user.login
+			session[:user_login]=valid_user.login
+			session[:user_id]=valid_user.id
 
 			# update last login time
 			valid_user.last_login = Time.now

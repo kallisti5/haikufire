@@ -1,6 +1,15 @@
 <% if @software != nil %>
 <h3><%= @software.title %></h3>
-<div class='description'>version <%= @software.version %> </div>
+<div class='description'>Added: <%= "#{Date::ABBR_MONTHNAMES[@software.created.month]} #{@software.created.day}, #{@software.created.year}" %>
+<span style='float: right'>Actions:
+<% if pull_user_role(session[:user_id]) == 0 || @software.creator == session[:user_id] %>
+<%= image_tag '/images/icons/16x16/application_form_edit.png', :style => 'vertical-align:middle;', :alt => 'Edit application' %>
+<%= image_tag '/images/icons/16x16/disk_multiple.png', :style => 'vertical-align:middle;', :alt => 'Edit downloads' %>
+<%= image_tag '/images/icons/16x16/photos.png', :style => 'vertical-align:middle;', :alt => 'Edit screenshots' %>
+<% else %>
+<a href='#'><%= image_tag '/images/icons/16x16/flag_red.png', :style => 'vertical-align:middle; border:0px;', :alt => 'Flag as inappropriate' %></a>
+<% end %>
+</span></div>
 
 <div class='block-box'>
 
@@ -12,8 +21,8 @@
 <td><%= @software.author %></td>
 </tr>
 <tr>
-<td><%= image_tag '/images/icons/16x16/calendar_add.png', :style => 'vertical-align:middle;' %> Added </td>
-<td><%= @software.created %></td>
+<td><%= image_tag '/images/icons/16x16/cake.png', :style => 'vertical-align:middle;' %> Version </td>
+<td><%= @software.version %></td>
 </tr>
 <tr>
 <td><%= image_tag '/images/icons/16x16/text_signature.png', :style => 'vertical-align:middle;' %> License </td>
@@ -30,7 +39,7 @@
 </table>
 </div>
 
-<%= debug(@software) %>
+<% #debug(@software) %>
 <% else %>
         <div class='alert'>
                         No items found with this name

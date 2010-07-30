@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20100709164830) do
   create_table "softwares", :force => true do |t|
     t.string   "title"
     t.integer  "category_id"
+    t.integer  "creator"
     t.datetime "created"
     t.datetime "updated"
     t.text     "description"
