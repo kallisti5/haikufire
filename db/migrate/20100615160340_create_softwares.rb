@@ -10,7 +10,6 @@ class CreateSoftwares < ActiveRecord::Migration
       t.string		:version
       t.string		:license
       t.string		:compiled
-      t.binary		:icon
     end
 
        Software.create  :title => "Test application",
