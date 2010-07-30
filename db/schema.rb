@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(:version => 20100709164830) do
     t.string   "version"
     t.string   "license"
     t.string   "compiled"
-    t.binary   "icon"
   end
 
   create_table "users", :force => true do |t|

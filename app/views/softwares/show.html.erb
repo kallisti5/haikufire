@@ -3,9 +3,9 @@
 <div class='description'>Added: <%= "#{Date::ABBR_MONTHNAMES[@software.created.month]} #{@software.created.day}, #{@software.created.year}" %>
 <span style='float: right'>Actions:
 <% if pull_user_role(session[:user_id]) == 0 || @software.creator == session[:user_id] %>
-<%= image_tag '/images/icons/16x16/application_form_edit.png', :style => 'vertical-align:middle;', :alt => 'Edit application' %>
-<%= image_tag '/images/icons/16x16/disk_multiple.png', :style => 'vertical-align:middle;', :alt => 'Edit downloads' %>
-<%= image_tag '/images/icons/16x16/photos.png', :style => 'vertical-align:middle;', :alt => 'Edit screenshots' %>
+<%= link_to image_tag('/images/icons/16x16/application_form_edit.png', :style => 'vertical-align:middle; border:0px;', :alt => 'Edit application'), :controller => 'softwares', :action => 'edit', :id => @software.title %>
+<%= image_tag '/images/icons/16x16/disk_multiple.png', :style => 'vertical-align:middle;border:0px;', :alt => 'Edit downloads' %>
+<%= image_tag '/images/icons/16x16/photos.png', :style => 'vertical-align:middle;border:0px;', :alt => 'Edit screenshots' %>
 <% else %>
 <a href='#'><%= image_tag '/images/icons/16x16/flag_red.png', :style => 'vertical-align:middle; border:0px;', :alt => 'Flag as inappropriate' %></a>
 <% end %>

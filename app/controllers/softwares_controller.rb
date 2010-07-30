@@ -25,6 +25,37 @@ class SoftwaresController < ApplicationController
     end
   end
 
+  def edit
+    @software = Software.find(:first, :conditions => {:title => params[:id]})
+
+    @categories = Category.find(:all, :order => "name")
+
+    if session[:user_id] && session[:user_id] != 99
+    
+        respond_to do |format|
+          format.html # show.html.erb
+          format.xml  { render :xml => @software }
+        end
+    end
+
+  end
+
+  def update
+    @software = Software.find(params[:id])
+
+    respond_to do |format|
+      if @software.update_attributes(params[:software])
+	flash[:info] = 'Software was successfully updated.';
+        format.html { redirect_to( :controller => 'softwares', :action => 'show', :id => @software.title) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @software.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+
   def create
     if session[:user_id] && session[:user_id] != 99
       @software = Software.new(params[:software])
