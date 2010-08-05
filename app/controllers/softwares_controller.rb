@@ -11,7 +11,7 @@ class SoftwaresController < ApplicationController
   end
 
   def new
-    if session[:user_id] && session[:user_id] != 99
+    if session[:user_id] && pull_user_role(session[:user_id]) != 99
       @software = Software.new
 
       @categories = Category.find(:all, :order => "name")
@@ -30,7 +30,7 @@ class SoftwaresController < ApplicationController
 
     @categories = Category.find(:all, :order => "name")
 
-    if session[:user_id] && session[:user_id] != 99
+    if session[:user_id] && pull_user_role(session[:user_id]) != 99
     
         respond_to do |format|
           format.html # show.html.erb
@@ -57,8 +57,10 @@ class SoftwaresController < ApplicationController
 
 
   def create
-    if session[:user_id] && session[:user_id] != 99
+    if session[:user_id] && pull_user_role(session[:user_id]) != 99
+
       @software = Software.new(params[:software])
+      @categories = Category.find(:all, :order => "name")
 
       # role 0  = Site Admin
       # role 1  = Privledged user

@@ -34,6 +34,9 @@ ActiveRecord::Schema.define(:version => 20100709164830) do
     t.string   "version"
     t.string   "license"
     t.string   "compiled"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
   end
 
   create_table "users", :force => true do |t|
