@@ -12,9 +12,17 @@ class Software < ActiveRecord::Base
 	# paperclip magic
 	# in the future Amazon s3 image storage is possible
 	has_attached_file :icon,
-		:default_url => "/images/icons/generic.png",
+		:default_url => "/assets/no_icon.png",
 		:url => "/assets/:id/:style/:basename.:extension",
 		:path => ":rails_root/public/assets/:id/:style/:basename.:extension",
 		:styles => {
 			:icon => "32x32#"}
+
+	has_attached_file :screenshot,
+		:default_url => "/assets/no_screenshot.png",
+		:url => "/assets/:id/:style/:basename.:extension",
+		:path => ":rails_root/public/assets/:id/:style/:basename.:extension",
+		:styles => {
+                        :shot_sm => "128x128#"}
+
 end
