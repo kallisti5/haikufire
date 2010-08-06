@@ -11,9 +11,12 @@ class CreateSoftwares < ActiveRecord::Migration
       t.string		:version
       t.string		:license
       t.string		:compiled
-      t.string		:icon_file_name		# paperclip icon assets
+      t.string		:icon_file_name			# paperclip icon assets
       t.string		:icon_content_type
       t.integer		:icon_file_size
+      t.string		:screenshot_file_name		# paperclip screenshot assets
+      t.string		:screenshot_content_type
+      t.integer		:screenshot_file_size
     end
 
        Software.create  :title => "Test application",

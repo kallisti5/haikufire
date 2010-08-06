@@ -47,6 +47,12 @@
   </td></tr>
 
   <tr><td>
+    <%= f.label :screenshot %>
+  </td><td>
+    <%= file_field(:software, :screenshot) %>
+  </td></tr>
+
+  <tr><td>
     <%= f.label :description %>
   </td><td>
     <%= text_area(:software, :description, :cols => 51, :rows => 15) %>

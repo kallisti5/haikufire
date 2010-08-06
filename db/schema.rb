@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(:version => 20100709164830) do
     t.string   "icon_file_name"
     t.string   "icon_content_type"
     t.integer  "icon_file_size"
+    t.string   "screenshot_file_name"
+    t.string   "screenshot_content_type"
+    t.integer  "screenshot_file_size"
   end
 
   create_table "users", :force => true do |t|
