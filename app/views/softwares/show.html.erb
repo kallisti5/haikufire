@@ -4,8 +4,6 @@
 <span style='float: right'>Actions:
 <% if pull_user_role(session[:user_id]) == 0 || @software.creator == session[:user_id] %>
 <%= link_to image_tag('/images/icons/16x16/application_form_edit.png', :style => 'vertical-align:middle; border:0px;', :alt => 'Edit application'), :controller => 'softwares', :action => 'edit', :id => @software.title %>
-<%= image_tag '/images/icons/16x16/disk_multiple.png', :style => 'vertical-align:middle;border:0px;', :alt => 'Edit downloads' %>
-<%= image_tag '/images/icons/16x16/photos.png', :style => 'vertical-align:middle;border:0px;', :alt => 'Edit screenshots' %>
 <% else %>
 <a href='#'><%= image_tag '/images/icons/16x16/flag_red.png', :style => 'vertical-align:middle; border:0px;', :alt => 'Flag as inappropriate' %></a>
 <% end %>
@@ -13,7 +11,7 @@
 
 <div class='block-box'>
 
-<%= image_tag @software.screenshot.url(:shot_sm), :id => 'softwareShot' %>
+<%= link_to( image_tag(@software.screenshot.url(:shot_sm), :id => 'softwareShot', :style => 'vertical-align:middle; border:1px solid; border-color:#1F1F20 #567EBB #567EBB #1F1F20;'), @software.screenshot.url,  :target => "_blank") %>
 
 <table id='softwareDetails'>
 <tr>
