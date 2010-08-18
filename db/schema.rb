@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20100709164830) do
     t.datetime "updated"
     t.text     "description"
     t.string   "author"
+    t.string   "url"
     t.string   "version"
     t.string   "license"
     t.string   "compiled"
@@ -40,6 +41,9 @@ ActiveRecord::Schema.define(:version => 20100709164830) do
     t.string   "screenshot_file_name"
     t.string   "screenshot_content_type"
     t.integer  "screenshot_file_size"
+    t.string   "download_file_name"
+    t.string   "download_content_type"
+    t.integer  "download_file_size"
   end
 
   create_table "users", :force => true do |t|

@@ -30,8 +30,10 @@ class Software < ActiveRecord::Base
 		:default_url => "/assets/no_screenshot.png",
 		:url => "/assets/:id/:style/:basename.:extension",
 		:path => ":rails_root/public/assets/:id/:style/:basename.:extension",
+		:convert_options => {
+			:shot_sm => "-crop '400x128< +1+1' -strip"}, 
 		:styles => {
-                        :shot_sm => "128x128#"}
+                        :shot_sm => "600x128<"}
 
 	### End paperclip magic
 
