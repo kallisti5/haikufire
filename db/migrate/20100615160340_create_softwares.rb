@@ -8,7 +8,7 @@ class CreateSoftwares < ActiveRecord::Migration
       t.timestamp	:updated
       t.text		:description
       t.string		:author
-      t.string		:url
+      t.string		:website
       t.string		:version
       t.string		:license
       t.string		:compiled
@@ -18,7 +18,7 @@ class CreateSoftwares < ActiveRecord::Migration
       t.string		:screenshot_file_name		# paperclip screenshot assets
       t.string		:screenshot_content_type
       t.integer		:screenshot_file_size
-      t.string		:download_file_name		# paperclip icon asset
+      t.string		:download_file_name		# paperclip download asset
       t.string		:download_content_type
       t.integer		:download_file_size
     end
@@ -26,11 +26,8 @@ class CreateSoftwares < ActiveRecord::Migration
        Software.create  :title => "Test application",
                         :category_id => 1,
 			:creator => 1,
-			:url => "http://fancypants.com",
-			:description => "Test software item
-					* Produces test data
-					* Full of win
-					* Migrates cleanly through the usage of gray-skull",
+			:website => "http://fancypants.com",
+			:description => "Test software item\n* Produces test data\n* Full of win\n* Migrates cleanly",
 			:author => "Jose fancy-pants",
 			:license => "GPL",
 			:version => "1.0",
@@ -41,7 +38,7 @@ class CreateSoftwares < ActiveRecord::Migration
        Software.create  :title => "Test application II",
                         :category_id => 1,
 			:creator => 1,
-			:url => "http://fancypants.com",
+			:website => "http://fancypants.com",
                         :description => "Test development software item",
                         :author => "Jose fancy-pants",
                         :license => "GPL",

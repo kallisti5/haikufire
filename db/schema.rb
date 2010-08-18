@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20100709164830) do
     t.datetime "updated"
     t.text     "description"
     t.string   "author"
-    t.string   "url"
+    t.string   "website"
     t.string   "version"
     t.string   "license"
     t.string   "compiled"

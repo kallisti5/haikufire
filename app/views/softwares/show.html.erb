@@ -27,15 +27,19 @@ version <%= @software.version %>
 
 <table id='softwareDetails'>
 <tr>
-<td style='width: 90px;'><%= image_tag '/images/icons/16x16/vcard.png', :style => 'vertical-align:middle;' %> Author </td>
+<td style='width: 90px;'><%= image_tag '/images/icons/16x16/user_green.png', :style => 'vertical-align:middle;' %> Author </td>
 <td><%= @software.author %></td>
+</tr>
+<tr>
+<td><%= image_tag '/images/icons/16x16/link_go.png', :style => 'vertical-align:middle;' %> Website </td>
+<td><%= link_to @software.website %></td>
 </tr>
 <tr>
 <td><%= image_tag '/images/icons/16x16/cake.png', :style => 'vertical-align:middle;' %> Version </td>
 <td><%= @software.version %></td>
 </tr>
 <tr>
-<td><%= image_tag '/images/icons/16x16/text_signature.png', :style => 'vertical-align:middle;' %> License </td>
+<td><%= image_tag '/images/icons/16x16/copying_and_distribution.png', :style => 'vertical-align:middle;' %> License </td>
 <td><%= @software.license %></td>
 </tr>
 <tr>
@@ -49,10 +53,9 @@ version <%= @software.version %>
 </table>
 </div>
 
-<% #debug(@software) %>
-
 <% else %>
         <div class='alert'>
                         No items found with this name
         </div>
 <% end %>
+
