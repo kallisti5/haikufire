@@ -1,3 +1,6 @@
+
+RAILS_GEM_VERSION = '2.3.5'
+
 require 'rubygems'
 
 # Set up gems listed in the Gemfile.
