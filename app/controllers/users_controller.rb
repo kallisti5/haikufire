@@ -19,9 +19,9 @@ class UsersController < ApplicationController
 		redirect_to :action => 'login'
 	else
 		# @user.password is converted to an md5 hash in the model code
-		valid_user = User.where(:conditions => ["login = ? and password = ?",@user.login, @user.password], :limit => 1) 
+		valid_user = User.where(:login => @user.login, :password => @user.password) 
 
-		if valid_user and valid_user.role != 99
+		if valid_user.exists? and valid_user.role != 99
 			#creates a session with username
 			session[:user_login]=valid_user.login
 			session[:user_id]=valid_user.id

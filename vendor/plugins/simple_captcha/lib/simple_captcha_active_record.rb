@@ -20,7 +20,7 @@ module SimpleCaptcha #:nodoc
     #  
     #  @user.valid_with_captcha?  # whene captcha validation is required.
     #
-    #  @user.valid?               # when captcha validation is not required.
+    #  @user.valid_cap?               # when captcha validation is not required.
     #
     # * to save the instance
     #
@@ -42,7 +42,7 @@ module SimpleCaptcha #:nodoc
     end
     
     module InstanceMethods
-      def valid?
+      def valid_cap?
         return valid_without_captcha? if RAILS_ENV == 'test'
         if authenticate_with_captcha
           ret = valid_without_captcha?
@@ -64,7 +64,7 @@ module SimpleCaptcha #:nodoc
       def valid_with_captcha?
         return valid_without_captcha? if RAILS_ENV == 'test'
         self.authenticate_with_captcha = true
-        ret = self.valid?
+        ret = self.valid_cap?
         self.authenticate_with_captcha = false
         ret
       end

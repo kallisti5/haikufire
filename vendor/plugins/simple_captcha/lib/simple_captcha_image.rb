@@ -3,7 +3,6 @@
 require 'rubygems'
 require 'RMagick'
 
-
 module SimpleCaptcha #:nodoc
   module ImageHelpers #:nodoc
     

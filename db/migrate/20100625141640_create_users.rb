@@ -19,8 +19,6 @@ class CreateUsers < ActiveRecord::Migration
                     :email => "kallisti5@unixzen.com",
                     :role => 0,
                     :created_at => Time.now
-
-
   end
 
   def self.down
