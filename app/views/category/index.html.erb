@@ -1,6 +1,6 @@
 <% @categories.each do |category| %>  
 
-<% item_count = Software.find(:all, :conditions => {:category_id => category.id}).count %>
+<% item_count = Software.where(:conditions => {:category_id => category.id}).count %>
 
 <table class=item>
         <tr>

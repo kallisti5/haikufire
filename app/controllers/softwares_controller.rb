@@ -2,7 +2,7 @@ class SoftwaresController < ApplicationController
 
   def show
 
-    @software = Software.find(:first, :conditions => {:title => params[:id]})
+    @software = Software.where( :conditions => {:title => params[:id]}, :limit => 1)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -14,7 +14,7 @@ class SoftwaresController < ApplicationController
     if session[:user_id] && pull_user_role(session[:user_id]) != 99
       @software = Software.new
 
-      @categories = Category.find(:all, :order => "name")
+      @categories = Category.order('name ASC')
 
       respond_to do |format|
         format.html # new.html.erb
@@ -26,9 +26,9 @@ class SoftwaresController < ApplicationController
   end
 
   def edit
-    @software = Software.find(:first, :conditions => {:title => params[:id]})
+    @software = Software.where(:conditions => {:title => params[:id]}, :limit => 1)
 
-    @categories = Category.find(:all, :order => "name")
+    @categories = Category.order('name ASC')
 
     if session[:user_id] && pull_user_role(session[:user_id]) != 99
     
@@ -60,7 +60,7 @@ class SoftwaresController < ApplicationController
     if session[:user_id] && pull_user_role(session[:user_id]) != 99
 
       @software = Software.new(params[:software])
-      @categories = Category.find(:all, :order => "name")
+      @categories = Category.order('name ASC')
 
       # role 0  = Site Admin
       # role 1  = Privledged user
