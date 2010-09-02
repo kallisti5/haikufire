@@ -6,7 +6,10 @@ class NewsController < ApplicationController
 		require 'ostruct'
 
 		begin
-		twitter = Twitter::Client.new(:login => "haikufire", :password => "PASS")
+
+		# OAuth is the devil
+		twitter = Twitter::Client.from_config("config/twitter.yml", "haikufire")
+        
 		@twitter_timelines = twitter.timeline_for(:user, :id => "haikufire")
 
 		rescue
