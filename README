@@ -4,3 +4,21 @@ A rewrite of Haikufire.com in Rails to simplify the management of the site.
 Rails should make development much easier and make things easier to keep up with.
 
 I am new to Rails/Ruby... so be kind :)
+
+
+== Rails Environment Setup
+
+* Clean up
+** uninstall all ruby versions and gems if previously installed
+* Install needed libraries ( you WILL need these ;) )
+** sudo apt-get install libssl-dev zlib-dev libmagickcore-dev libmagickwand-dev sqlite3 libsqlite3-dev libreadline-dev
+* Setup ruby environment
+** install rvm system-wide
+** add user to rvm group
+** add rvm bits to .bashrc
+** logout, login
+** open a shell
+** rvm install 1.9.2
+** rvm use 1.9.2
+* Install Rails 3 gem into Ruby 1.9.2 environment
+** gem install rails
