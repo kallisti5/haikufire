@@ -23,6 +23,12 @@
   </td></tr>
 
   <tr><td>
+    <%= f.label :website %>
+  </td><td>
+    <%= f.text_field :website %>
+  </td></tr>
+
+  <tr><td>
     <%= f.label :license %>
   </td><td>
     <%= select("software", "license", ["Apache","Apple","Artistic","Boost","BSD","CDDL","eCos","Educational","GNU","GPL","MIT","Other","Public Domain"]) %>

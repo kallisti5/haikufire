@@ -1,8 +1,8 @@
 <% if @software != nil %>
 <h3><%= @software.title %></h3>
-<div class='description'>Added: <%= "#{Date::ABBR_MONTHNAMES[@software.created.month]} #{@software.created.day}, #{@software.created.year}" %>
+<div class='description'>Added: <%= "#{Date::ABBR_MONTHNAMES[@software.created.month]} #{@software.created.day}, #{@software.created.year}" %> by <%= link_to( @software.user.login, "/users/profile/#{@software.user.login}") %>
 <span style='float: right'>Actions:
-<% if pull_user_role(session[:user_id]) == 0 || @software.creator == session[:user_id] %>
+<% if pull_user_role(session[:user_id]) == 0 || @software.user.id == session[:user_id] %>
 <%= link_to image_tag('/images/icons/16x16/application_form_edit.png', :style => 'vertical-align:middle; border:0px;', :alt => 'Edit application'), :controller => 'softwares', :action => 'edit', :id => @software.title %>
 <% else %>
 <a href='#'><%= image_tag '/images/icons/16x16/flag_red.png', :style => 'vertical-align:middle; border:0px;', :alt => 'Flag as inappropriate' %></a>

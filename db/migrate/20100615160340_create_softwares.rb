@@ -3,7 +3,7 @@ class CreateSoftwares < ActiveRecord::Migration
     create_table :softwares do |t|
       t.string		:title
       t.integer		:category_id
-      t.integer		:creator
+      t.integer		:user_id			# creator
       t.timestamp	:created
       t.timestamp	:updated
       t.text		:description
@@ -25,7 +25,7 @@ class CreateSoftwares < ActiveRecord::Migration
 
        Software.create  :title => "Test application",
                         :category_id => 1,
-			:creator => 1,
+			:user_id => 1,
 			:website => "http://fancypants.com",
 			:description => "Test software item\n* Produces test data\n* Full of win\n* Migrates cleanly",
 			:author => "Jose fancy-pants",
@@ -37,7 +37,7 @@ class CreateSoftwares < ActiveRecord::Migration
 
        Software.create  :title => "Test application II",
                         :category_id => 1,
-			:creator => 1,
+			:user_id => 1,
 			:website => "http://fancypants.com",
                         :description => "Test development software item",
                         :author => "Jose fancy-pants",

@@ -11,7 +11,8 @@ class SoftwaresController < ApplicationController
   end
 
   def new
-    if session[:user_id] && pull_user_role(session[:user_id]) != 99
+    if session[:user_id] && User.where(session[:user_id]).role != 99
+
       @software = Software.new
 
       @categories = Category.order('name ASC')
@@ -29,14 +30,17 @@ class SoftwaresController < ApplicationController
     @software = Software.where( :title => params[:id] ).first
     @categories = Category.order('name ASC')
 
-    if session[:user_id] && pull_user_role(session[:user_id]) != 99
+    if session[:user_id] &&
+       ( User.where(:id => session[:user_id]).first.role == 0 || @software.user.first.id == session[:user_id] )
     
         respond_to do |format|
           format.html # show.html.erb
           format.xml  { render :xml => @software }
         end
+    else
+      flash[:warning] = "You cannot edit software you have not created. Please login or create a new user first."
+      redirect_to :controller => 'auth', :action => 'login'
     end
-
   end
 
   def update
