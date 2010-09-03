@@ -1,4 +1,4 @@
-class CategoryController < ApplicationController
+class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.xml
   def index
@@ -14,7 +14,10 @@ class CategoryController < ApplicationController
   # GET /categories/1.xml
   def show
 
-    @category = Category.where(:name => params[:id], :limit => 1)
+    require 'pp'
+
+    @category = Category.where(:name => params[:id])
+
     @softwares = Software.where(:category_id => @category.id)
 
     respond_to do |format|
