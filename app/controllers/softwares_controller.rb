@@ -2,7 +2,7 @@ class SoftwaresController < ApplicationController
 
   def show
 
-    @software = Software.where( :conditions => {:title => params[:id]}, :limit => 1)
+    @software = Software.where( :title => params[:id] ).first
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,8 +26,7 @@ class SoftwaresController < ApplicationController
   end
 
   def edit
-    @software = Software.where(:conditions => {:title => params[:id]}, :limit => 1)
-
+    @software = Software.where( :title => params[:id] ).first
     @categories = Category.order('name ASC')
 
     if session[:user_id] && pull_user_role(session[:user_id]) != 99

@@ -19,9 +19,9 @@ class UsersController < ApplicationController
 		redirect_to :action => 'login'
 	else
 		# @user.password is converted to an md5 hash in the model code
-		valid_user = User.where(:login => @user.login, :password => @user.password) 
+		valid_user = User.where(:login => @user.login, :password => @user.password).first 
 
-		if valid_user.exists? and valid_user.role != 99
+		if valid_user and valid_user.role != 99
 			#creates a session with username
 			session[:user_login]=valid_user.login
 			session[:user_id]=valid_user.id
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   def profile
 	require 'digest/md5'
 
-	@user = User.where(:conditions => { :login => params[:id] }, :limit => 1)
+	@user = User.where( :login => params[:id] ).first
 	# convert email into md5 hash for gravatar
 	@email_hash = Digest::MD5.hexdigest(@user.email.downcase)
   end
@@ -102,7 +102,7 @@ class UsersController < ApplicationController
 
       # ensure hash looks proper
       if validation_hash.length == 64
-         user = User.where(:conditions => ["role = 99 and validation_hash = ?", validation_hash ], :limit => 1)
+         user = User.where(:role => 99, :validation_hash => validation_hash ).first
       else
          user = nil
       end
