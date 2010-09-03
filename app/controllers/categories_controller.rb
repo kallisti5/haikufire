@@ -14,11 +14,8 @@ class CategoriesController < ApplicationController
   # GET /categories/1.xml
   def show
 
-    require 'pp'
-
-    @category = Category.where(:name => params[:id])
-
-    @softwares = Software.where(:category_id => @category.id)
+    @category = Category.where(:name => params[:id]).first
+    @softwares = @category.softwares
 
     respond_to do |format|
       format.html # show.html.erb

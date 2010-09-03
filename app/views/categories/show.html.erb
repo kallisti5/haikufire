@@ -16,7 +16,7 @@
 	                <td> <span style='border-bottom: 1px solid #567EBB;'>
 	                        <%= link_to software.title, "/softwares/show/" << software.title %>
 			<span style='font-size: 0.8em;'> by <%= software.author %></span> </span>
-	                <div style='font-size: 0.8em;'><%= truncate(software.description, 90, "...") %></div> </td>
+	                <div style='font-size: 0.8em;'><%= truncate(software.description, :length => 90, :omission => '...') %></div> </td>
 	                </tr>
 	        </table>
 	
