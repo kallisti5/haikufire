@@ -1,7 +1,7 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
-      t.string :login		# user login
+      t.string :username	# user login
       t.string :password	# md5 of user password
       t.string :name		# user real name
       t.string :email		# user email
@@ -13,7 +13,7 @@ class CreateUsers < ActiveRecord::Migration
       t.timestamps
     end
 
-        User.create :login => "admin",
+        User.create :username => "admin",
                     :password => "password",  #why yes.. this is the md5 for 'password'
                     :name => "An administrator",
                     :email => "kallisti5@unixzen.com",

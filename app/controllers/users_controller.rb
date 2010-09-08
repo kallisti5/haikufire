@@ -14,16 +14,16 @@ class UsersController < ApplicationController
 
 	@user = User.new(params[:userform])
 
-	if !@user.login or !@user.password
-		flash[:warning] = "Please provide a login and a password"
+	if !@user.username or !@user.password
+		flash[:warning] = "Please provide a username and a password"
 		redirect_to :action => 'login'
 	else
 		# @user.password is converted to an md5 hash in the model code
-		valid_user = User.where(:login => @user.login, :password => @user.password).first 
+		valid_user = User.where(:username => @user.username, :password => @user.password).first 
 
 		if valid_user and valid_user.role != 99
 			#creates a session with username
-			session[:user_login]=valid_user.login
+			session[:user_login]=valid_user.username
 			session[:user_id]=valid_user.id
 
 			# update last login time
@@ -31,9 +31,9 @@ class UsersController < ApplicationController
 			valid_user.save
 
 			#redirects the user to our private page.
-			redirect_to :action => 'profile', :id => @user.login
+			redirect_to :action => 'profile', :id => @user.username
 		else
-			flash[:warning] = "Invalid User/Password"
+			flash[:warning] = "Invalid Username/Password"
 			redirect_to :action=> 'login'
 		end
 	end
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   def profile
 	require 'digest/md5'
 
-	@user = User.where( :login => params[:id] ).first
+	@user = User.where( :username => params[:id] ).first
 	# convert email into md5 hash for gravatar
 	@email_hash = Digest::MD5.hexdigest(@user.email.downcase)
   end
@@ -83,7 +83,6 @@ class UsersController < ApplicationController
 
       respond_to do |format|
         if @user.save_with_captcha
-          #format.html { redirect_to :action => 'profile', :id => @user.login }
           MailWorker::deliver_verification(@user.email, @user.validation_hash)
           flash[:info] = "User creation successful. An email has been sent to #{@user.email}.<br/>Please click the validation link in the sent email before logging in."
           format.html { redirect_to :action => 'login' }
@@ -111,7 +110,7 @@ class UsersController < ApplicationController
          user.role = 2
          user.validation_hash = ""
          user.save
-         flash[:info] = "User validation successful, thanks for registering #{user.login}!<br/>You may now login."
+         flash[:info] = "User validation successful, thanks for registering #{user.username}!<br/>You may now login."
       else
          flash[:warning] = "User validation was un-successful, invalid validation token passed."
       end

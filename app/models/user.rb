@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
 				:with       => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i,
 				:message    => 'must be valid'
 
-	validates_presence_of :login
-	validates_uniqueness_of :login
+	validates_presence_of :username
+	validates_uniqueness_of :username
 
 
 	validates_presence_of :password, :message => 'must be greater then 4 characters'
