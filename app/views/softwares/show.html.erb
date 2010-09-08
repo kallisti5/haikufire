@@ -15,8 +15,8 @@
 <tr><td style='border-right: 1px solid #567EBB ; padding-top: 4%; width: 150px;'>
 <center>
 <%= image_tag(@software.icon.url(:icon), :id => 'softwareIcon', :style => 'vertical-align:middle;') %><br/>
-<%= @software.title %><br/>
-version <%= @software.version %>
+<%= sanitize(@software.title) %><br/>
+version <%= sanitize(@software.version) %>
 </center>
 </td><td>
 <center>
@@ -28,15 +28,15 @@ version <%= @software.version %>
 <table id='softwareDetails'>
 <tr>
 <td style='width: 90px;'><%= image_tag '/images/icons/16x16/user_green.png', :style => 'vertical-align:middle;' %> Author </td>
-<td><%= @software.author %></td>
+<td><%= sanitize(@software.author) %></td>
 </tr>
 <tr>
 <td><%= image_tag '/images/icons/16x16/link_go.png', :style => 'vertical-align:middle;' %> Website </td>
-<td><%= link_to @software.website %></td>
+<td><%= link_to sanitize(@software.website), sanitize(@software.website) %></td>
 </tr>
 <tr>
 <td><%= image_tag '/images/icons/16x16/cake.png', :style => 'vertical-align:middle;' %> Version </td>
-<td><%= @software.version %></td>
+<td><%= sanitize(@software.version) %></td>
 </tr>
 <tr>
 <td><%= image_tag '/images/icons/16x16/copying_and_distribution.png', :style => 'vertical-align:middle;' %> License </td>
@@ -48,7 +48,7 @@ version <%= @software.version %>
 </tr>
 <tr>
 <td><%= image_tag '/images/icons/16x16/page.png', :style => 'vertical-align:middle;' %> Description </td>
-<td><%= format_text @software.description %></td>
+<td><%= sanitize(textilize @software.description) %></td>
 </tr>
 </table>
 </div>
