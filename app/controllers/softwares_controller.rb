@@ -59,10 +59,10 @@ class SoftwaresController < ApplicationController
             format.xml  { render :xml => @software.errors, :status => :unprocessable_entity }
           end
         end
-		else
+    else
       flash[:warning] = "You cannot edit software you have not created. Please login or create a new user first."
       redirect_to :controller => 'auth', :action => 'login'
-		end
+    end
   end
 
 

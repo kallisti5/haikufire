@@ -1,13 +1,19 @@
 class Software < ActiveRecord::Base
 
-	belongs_to :category
-	belongs_to :user
+	belongs_to :category	# many softwares belong to a single category
+	belongs_to :user	# many softwares belong to a single user (submitter)
 
 	validates_presence_of :title
+	validates_format_of     :title,
+				:with       => /^[a-z0-9\s\,\(\)\']+$/i,
+				:message    => 'must only contain valid characters ( eg. a-z 0-9 , ( ) \' )'
+
 	validates_presence_of :category_id
 	validates_presence_of :author
 	validates_presence_of :description
 	validates_presence_of :compiled
+
+
 
 	validates_uniqueness_of :title
 
