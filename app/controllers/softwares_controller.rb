@@ -46,16 +46,23 @@ class SoftwaresController < ApplicationController
   def update
     @software = Software.find(params[:id])
 
-    respond_to do |format|
-      if @software.update_attributes(params[:software])
-	flash[:info] = 'Software was successfully updated.';
-        format.html { redirect_to( :controller => 'softwares', :action => 'show', :id => @software.title) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @software.errors, :status => :unprocessable_entity }
-      end
-    end
+    if session[:user_id] &&
+       ( User.where(:id => session[:user_id]).first.role == 0 || @software.user.first.id == session[:user_id] )
+
+        respond_to do |format|
+          if @software.update_attributes(params[:software])
+            flash[:info] = 'Software was successfully updated.';
+            format.html { redirect_to( :controller => 'softwares', :action => 'show', :id => @software.title) }
+            format.xml  { head :ok }
+          else
+            format.html { render :action => "edit" }
+            format.xml  { render :xml => @software.errors, :status => :unprocessable_entity }
+          end
+        end
+		else
+      flash[:warning] = "You cannot edit software you have not created. Please login or create a new user first."
+      redirect_to :controller => 'auth', :action => 'login'
+		end
   end
 
 
