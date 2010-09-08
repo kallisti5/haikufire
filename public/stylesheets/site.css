@@ -207,15 +207,6 @@ footer div {
 	font-size: 12px;
 }
 
-.errorExplanation h2 {
-	font-size: 1.8em;
-	padding: 0px;
-}
-
-.errorExplanation p {
-	padding: 0px;
-}
-
 #errorExplanation {
 	background-color: #B84D32;
 	border: 1px solid #ff0000;
@@ -225,6 +216,12 @@ footer div {
 	-webkit-border-radius: 15px;
 	border-radius: 15px;
 	margin-bottom:15px;
+}
+
+#errorExplanation h2 {
+	font-size: 1.8em;
+	margin: 5px;
+	padding: 5px;
 }
 
 #infoExplanation {

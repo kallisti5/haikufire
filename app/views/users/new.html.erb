@@ -3,34 +3,47 @@
 <%= image_tag '/images/icons/32x32/user_add.png', :style => "vertical-align:middle" %> New user</td></tr>
 
 <%= form_for(@user) do |f| %>
-<%= f.error_messages %>
+
+  <% if @user.errors.any? %>  
+  <div id="errorExplanation">  
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>  
+    <ul>  
+    <% @user.errors.full_messages.each do |msg| %>  
+      <li><%= msg %></li>  
+    <% end %>  
+    </ul>  
+  </div>  
+  <% end %>  
+
   <tr><td>
-    <%= f.label :login %>
-  </td><td>
-    <%= f.text_field :login %>
+    <%= raw f.label :login %>
+  </td> <td>
+    <%= raw f.text_field :login %>
   </td></tr>
 
   <tr><td>
-    <%= f.label :password %>
+    <%= raw f.label :password %>
   </td><td>
-    <%= f.password_field :password, {:value => ''} %>
+    <%= raw f.password_field :password, {:value => ''} %>
   </td></tr>
 
   <tr><td>
-    <%= f.label :name %>
+    <%= raw f.label :name %>
   </td><td>
-    <%= f.text_field :name %>
+    <%= raw f.text_field :name %>
   </td></tr>
 
   <tr><td>
-    <%= f.label :email %>
+    <%= raw f.label :email %>
   </td><td>
-    <%= f.text_field :email %>
+    <%= raw f.text_field :email %>
   </td></tr>
 
-  <tr><td COLSPAN=2 style='height: 20px;'></td></tr>
+  <tr><td COLSPAN=2 style='height: 20px;'>
 
   <%= show_simple_captcha(:object => "user", :image_style => 'almost_invisible')%>
+
+  </td> </tr>
 
   <tr><td COLSPAN=2 style='text-align: right;'>
     <%= f.submit "Create" %>

@@ -4,6 +4,6 @@ Haikufire::Application.routes.draw do
   resources :softwares
   match '/auth/login' => 'users#login', :as => :login
   match '/auth/logout' => 'users#logout', :as => :logout
-  match '/simple_captcha/:action' => 'simple_captcha#index', :as => :simple_captcha
+  match '/simple_captcha(/:action)' => 'simple_captcha', :as => :simple_captcha
   match '/:controller(/:action(/:id))'
 end

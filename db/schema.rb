@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(:version => 20100709164830) do
     t.datetime "updated_at"
   end
 
+  add_index "simple_captcha_data", ["key"], :name => "index_simple_captcha_data_on_key"
+
   create_table "softwares", :force => true do |t|
     t.string   "title"
     t.integer  "category_id"

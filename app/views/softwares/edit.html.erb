@@ -3,69 +3,80 @@
 <%= image_tag '/images/icons/32x32/textfield_rename.png', :style => "vertical-align:middle" %> Edit software</td></tr>
 
 <%= form_for(@software, :html => { :multipart => true } ) do |f| %>
-<%= f.error_messages %>
+
+  <% if @software.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@software.errors.count, "error") %> prevented this from being saved:</h2>
+    <ul>
+    <% @software.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
   <tr><td>
-    <%= f.label :title %>
+    <%= raw f.label :title %>
   </td><td>
-    <%= f.text_field :title %>
+    <%= raw f.text_field :title %>
   </td></tr>
 
   <tr><td>
-    <%= f.label :version %>
+    <%= raw f.label :version %>
   </td><td>
-    <%= f.text_field :version %>
+    <%= raw f.text_field :version %>
   </td></tr>
 
   <tr><td>
-    <%= f.label :author %>
+    <%= raw f.label :author %>
   </td><td>
-    <%= f.text_field :author %>
+    <%= raw f.text_field :author %>
   </td></tr>
 
   <tr><td>
-    <%= f.label :website %>
+    <%= raw f.label :website %>
   </td><td>
-    <%= f.text_field :website %>
+    <%= raw f.text_field :website %>
   </td></tr>
 
   <tr><td>
-    <%= f.label :license %>
+    <%= raw f.label :license %>
   </td><td>
-    <%= select("software", "license", ["Apache","Apple","Artistic","Boost","BSD","CDDL","eCos","Educational","GNU","GPL","MIT","Other","Public Domain"]) %>
+    <%= raw select("software", "license", ["Apache","Apple","Artistic","Boost","BSD","CDDL","eCos","Educational","GNU","GPL","MIT","Other","Public Domain"]) %>
   </td></tr>
 
   <tr><td>
-    <%= f.label :category_id %>
+    <%= raw f.label :category_id %>
   </td><td>
-    <%= collection_select(:software, :category_id, @categories, :id, :name ) %>
+    <%= raw collection_select(:software, :category_id, @categories, :id, :name ) %>
   </td></tr>
 
   <tr><td>
-    <%= f.label :compiled %>
+    <%= raw f.label :compiled %>
   </td><td>
-    <%= select(:software, :compiled, { "Native Haiku Application"=>"native", "Compatible Legacy BeOS Application" => "compatible"}) %>
+    <%= raw select(:software, :compiled, { "Native Haiku Application"=>"native", "Compatible Legacy BeOS Application" => "compatible"}) %>
   </td></tr>
 
   <tr><td>
-    <%= f.label :icon %>
+    <%= raw f.label :icon %>
   </td><td>
-    <%= file_field(:software, :icon) %>
+    <%= raw file_field(:software, :icon) %>
   </td></tr>
 
   <tr><td>
-    <%= f.label :screenshot %>
+    <%= raw f.label :screenshot %>
   </td><td>
-    <%= file_field(:software, :screenshot) %>
+    <%= raw file_field(:software, :screenshot) %>
   </td></tr>
 
   <tr><td>
-    <%= f.label :description %>
+    <%= raw f.label :description %>
   </td><td>
-    <%= text_area(:software, :description, :cols => 51, :rows => 15) %>
+    <%= raw text_area(:software, :description, :cols => 51, :rows => 15) %>
   </td></tr>
 
   <tr><td COLSPAN=2 style='text-align: right;'>
-    <%= f.submit "Edit" %>
+    <%= raw f.submit "Edit" %>
   </td></tr>
 
 <% end %>

@@ -11,7 +11,7 @@ class SoftwaresController < ApplicationController
   end
 
   def new
-    if session[:user_id] && User.where(session[:user_id]).role != 99
+    if session[:user_id] && User.find(session[:user_id]).role != 99
 
       @software = Software.new
 
