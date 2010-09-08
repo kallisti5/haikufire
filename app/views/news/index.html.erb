@@ -7,7 +7,7 @@
 		<td> <span style='border-bottom: 1px solid #567EBB;'>
 			Tweet from <%= link_to item.user.screen_name, "http://twitter.com/" << item.user.screen_name  %>
 			<span style='font-size: 0.8em;'> on <%= item.created_at %></span> </span><br/>
-		<div style='font-size: 0.8em;'><%= item.text %></div> </td>
+		<div class='detail' ><%= item.text %></div> </td>
 		</tr>
 	</table>
 

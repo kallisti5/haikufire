@@ -7,7 +7,7 @@
                 <th width=32px;><%= image_tag "/images/category_icons/#{category.name.downcase}.png" %></th>
                 <td>
 			<%= link_to category.name, "/categories/show/#{category.name}" %> (<%= item_count %>)
-                        <br><span style='font-size: 0.9em; margin-left: 5px;'><%= category.description %></span>
+                        <br><span class='detail'><%= category.description %></span>
                 </td>
         </tr>
 </table>

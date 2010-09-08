@@ -8,9 +8,18 @@ class NewsController < ApplicationController
 		begin
 
 		# OAuth is the devil
-		twitter = Twitter::Client.from_config("config/twitter.yml", "haikufire")
-        
+		# TODO:DEPLOY
+		#  * key is token
+		#  * secret is secret
+		# info below is NOT consumer_xxx, that is in environment.rb
+		twitter = Twitter::Client.new( :oauth_access => {
+							:key => "XXXX-XXX",
+							:secret => "XXX" }) 
+
 		@twitter_timelines = twitter.timeline_for(:user, :id => "haikufire")
+
+		@twitter_timelines.slice!(8,@twitter_timelines.count)	# only show last 8 tweets
+
 
 		rescue
 			# If there is a problem, create a failure news item.

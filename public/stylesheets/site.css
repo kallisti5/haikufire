@@ -90,17 +90,28 @@ nav ul li.selected a {
 	padding-top: 60px;
 }
 
+#mainContent .item {
+	margin-bottom: 5px;
+}
+
 #mainContent .item td {
 	border-left: 1px solid #567ebb;
+	border-top: 1px solid #567ebb;
 	background-position:-1px 0;
 	background-repeat:repeat-y;
 	background-image:url("/images/sidebar_background.png");
 	padding: 5px;
-	width: 415px;
+	width: 565px;
 }
 
 #mainContent .item td:hover {
 	border-left: 1px solid #DBF70C;
+}
+
+#mainContent .item .detail {
+	font-size: 0.9em;
+	line-height:1.3em;
+	padding: 5px;
 }
 
 #intro {
