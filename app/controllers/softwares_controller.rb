@@ -1,7 +1,6 @@
 class SoftwaresController < ApplicationController
 
   def show
-
     @software = Software.where( :title => params[:id] ).first
 
     respond_to do |format|
@@ -14,7 +13,6 @@ class SoftwaresController < ApplicationController
     if session[:user_id] && User.find(session[:user_id]).role != 99
 
       @software = Software.new
-
       @categories = Category.order('name ASC')
 
       respond_to do |format|
@@ -29,7 +27,7 @@ class SoftwaresController < ApplicationController
   def edit
     @software = Software.where( :title => params[:id] ).first
     @categories = Category.order('name ASC')
-
+    
     if session[:user_id] &&
        ( User.where(:id => session[:user_id]).first.role == 0 || @software.user.first.id == session[:user_id] )
     

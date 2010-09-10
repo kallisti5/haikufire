@@ -42,37 +42,37 @@
   <tr><td>
     <%= raw f.label :license %>
   </td><td>
-    <%= raw select("software", "license", ["Apache","Apple","Artistic","Boost","BSD","CDDL","eCos","Educational","GNU","GPL","MIT","Other","Public Domain"]) %>
+    <%= raw f.select(:license, ["Apache","Apple","Artistic","Boost","BSD","CDDL","eCos","Educational","GNU","GPL","MIT","Other","Public Domain"]) %>
   </td></tr>
 
   <tr><td>
     <%= raw f.label :category_id %>
   </td><td>
-    <%= raw collection_select(:software, :category_id, @categories, :id, :name ) %>
+    <%= raw f.collection_select(:category_id, @categories, :id, :name ) %>
   </td></tr>
 
   <tr><td>
     <%= raw f.label :compiled %>
   </td><td>
-    <%= raw select(:software, :compiled, { "Native Haiku Application"=>"native", "Compatible Legacy BeOS Application" => "compatible"}) %>
+    <%= raw f.select(:compiled, { "Native Haiku Application"=>"native", "Compatible Legacy BeOS Application" => "compatible"}) %>
   </td></tr>
 
   <tr><td>
     <%= raw f.label :icon %>
   </td><td>
-    <%= raw file_field(:software, :icon) %>
+    <%= raw f.file_field(:icon) %>
   </td></tr>
 
   <tr><td>
     <%= raw f.label :screenshot %>
   </td><td>
-    <%= raw file_field(:software, :screenshot) %>
+    <%= raw f.file_field(:screenshot) %>
   </td></tr>
 
   <tr><td>
     <%= raw f.label :description %>
   </td><td>
-    <%= raw text_area(:software, :description, :cols => 51, :rows => 15) %>
+    <%= raw f.text_area(:description, :cols => 51, :rows => 15) %>
   </td></tr>
 
   <tr><td COLSPAN=2 style='text-align: right;'>

@@ -11,32 +11,31 @@ class UsersController < ApplicationController
   end
 
   def authenticate
-
-	@user = User.new(params[:userform])
-
-	if !@user.username or !@user.password
-		flash[:warning] = "Please provide a username and a password"
-		redirect_to :action => 'login'
-	else
-		# @user.password is converted to an md5 hash in the model code
-		valid_user = User.where(:username => @user.username, :password => @user.password).first 
-
-		if valid_user and valid_user.role != 99
-			#creates a session with username
-			session[:user_login]=valid_user.username
-			session[:user_id]=valid_user.id
-
-			# update last login time
-			valid_user.last_login = Time.now
-			valid_user.save
-
-			#redirects the user to our private page.
-			redirect_to :action => 'profile', :id => @user.username
+		@user = User.new(params[:userform])
+	
+		if !@user.username or !@user.password
+			flash[:warning] = "Please provide a username and a password"
+			redirect_to :action => 'login'
 		else
-			flash[:warning] = "Invalid Username/Password"
-			redirect_to :action=> 'login'
+			# @user.password is converted to an md5 hash in the model code
+			valid_user = User.where(:username => @user.username, :password => @user.password).first 
+	
+			if valid_user and valid_user.role != 99
+				#creates a session with username
+				session[:user_login]=valid_user.username
+				session[:user_id]=valid_user.id
+	
+				# update last login time
+				valid_user.last_login = Time.now
+				valid_user.save
+	
+				#redirects the user to our private page.
+				redirect_to :action => 'profile', :id => @user.username
+			else
+				flash[:warning] = "Invalid Username/Password"
+				redirect_to :action=> 'login'
+			end
 		end
-	end
   end
 
   def logout
@@ -47,11 +46,11 @@ class UsersController < ApplicationController
   end
 
   def profile
-	require 'digest/md5'
+		require 'digest/md5'
 
-	@user = User.where( :username => params[:id] ).first
-	# convert email into md5 hash for gravatar
-	@email_hash = Digest::MD5.hexdigest(@user.email.downcase)
+		@user = User.where( :username => params[:id] ).first
+		# convert email into md5 hash for gravatar
+		@email_hash = Digest::MD5.hexdigest(@user.email.downcase)
   end
 
   def new
@@ -120,6 +119,15 @@ class UsersController < ApplicationController
       end
 
   end
+
+  def edit
+    @user = User.where(:username => params[:id]).first
+
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @user }
+    end
+	end
 
   def update
   end
