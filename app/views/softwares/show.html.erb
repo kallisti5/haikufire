@@ -20,7 +20,13 @@ version <%= sanitize(@software.version) %>
 </center>
 </td><td>
 <center>
+
+<% if !@software.screenshot_file_name %>
+<%= image_tag(@software.screenshot.url(:shot_sm), :id => 'softwareShot') %>
+<% else %>
 <%= link_to( image_tag(@software.screenshot.url(:shot_sm), :id => 'softwareShot'), @software.screenshot.url,  :target => "_blank") %>
+<% end %>
+
 </center>
 </td></tr>
 </table>
