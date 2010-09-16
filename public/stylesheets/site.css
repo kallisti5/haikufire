@@ -274,3 +274,9 @@ footer div {
 
 #softwareDetails tr:nth-child(odd)    { background-color:#325994; }
 #softwareDetails tr:nth-child(even)    { background-color:#2B4C7E; }
+
+#share-box {
+	text-align: right;
+	background-image: url( /images/share.png );
+	background-repeat: no-repeat;
+}

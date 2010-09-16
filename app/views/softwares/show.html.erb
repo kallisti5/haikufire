@@ -59,6 +59,10 @@ version <%= sanitize(@software.version) %>
 </table>
 </div>
 
+<div class='block-box' id='share-box'>
+<a href="http://twitter.com/share" class="twitter-share-button" data-text="<%= sanitize(@software.title) %>" data-count="horizontal" data-via="haikufire">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</div>
+
 <% else %>
         <div class='alert'>
                         No items found with this name
