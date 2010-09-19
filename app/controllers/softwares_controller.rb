@@ -19,8 +19,8 @@ class SoftwaresController < ApplicationController
         format.html # new.html.erb
       end
     else
-      flash[:warning] = "Anonymous users cannot create new software entries.<br/>Please login or create a new user first."
-      redirect_to :controller => 'auth', :action => 'login'
+      flash[:warning] = "Anonymous users cannot create new software entries. Please login or create a new user first."
+			redirect_to [:login, @auth]
     end
   end
 
@@ -37,7 +37,7 @@ class SoftwaresController < ApplicationController
         end
     else
       flash[:warning] = "You cannot edit software you have not created. Please login or create a new user first."
-      redirect_to :controller => 'auth', :action => 'login'
+			redirect_to [:login, @auth]
     end
   end
 
@@ -59,7 +59,7 @@ class SoftwaresController < ApplicationController
         end
     else
       flash[:warning] = "You cannot edit software you have not created. Please login or create a new user first."
-      redirect_to :controller => 'auth', :action => 'login'
+			redirect_to [:login, @auth]
     end
   end
 
@@ -90,7 +90,7 @@ class SoftwaresController < ApplicationController
       end
     else
       flash[:warning] = "Anonymous users cannot create new software entries.<br/>Please login or create a new user first."
-      redirect_to :controller => 'auth', :action => 'login'
+			redirect_to [:login, @auth]
     end
   end
 

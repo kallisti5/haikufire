@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-	redirect_to("/")
+		redirect_to("/")
   end
 
   def login
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 	
 		if !@user.username or !@user.password
 			flash[:warning] = "Please provide a username and a password"
-			redirect_to :action => 'login'
+			redirect_to [:login]
 		else
 			# @user.password is converted to an md5 hash in the model code
 			valid_user = User.where(:username => @user.username, :password => @user.password).first 
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 				redirect_to :action => 'profile', :id => @user.username
 			else
 				flash[:warning] = "Invalid Username/Password"
-				redirect_to :action=> 'login'
+				redirect_to [:login]
 			end
 		end
   end
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def logout
 	if session[:user_id]
 		reset_session
-		redirect_to :action=> 'login'
+		redirect_to [:login]
 	end
   end
 
@@ -83,8 +83,8 @@ class UsersController < ApplicationController
       respond_to do |format|
         if @user.save_with_captcha
           MailWorker::deliver_verification(@user.email, @user.validation_hash)
-          flash[:info] = "User creation successful. An email has been sent to #{@user.email}.<br/>Please click the validation link in the sent email before logging in."
-          format.html { redirect_to :action => 'login' }
+          flash[:info] = "User creation successful. An email has been sent to #{@user.email}. Please click the validation link in the sent email before logging in."
+          format.html { redirect_to [:login] }
           format.xml  { render :xml => @user, :status => :created, :location => @user }
         else
           format.html { render :action => "new" }
@@ -115,7 +115,7 @@ class UsersController < ApplicationController
       end
 
       respond_to do |format|
-        format.html { redirect_to :action => 'login' }
+        format.html { redirect_to [:login] }
       end
 
   end
