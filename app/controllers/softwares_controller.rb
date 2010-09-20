@@ -1,12 +1,10 @@
 class SoftwaresController < ApplicationController
+	respond_to :html, :xml
 
   def show
     @software = Software.where( :title => params[:id] ).first
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @software }
-    end
+		respond_with(@software)
   end
 
   def new
@@ -15,9 +13,7 @@ class SoftwaresController < ApplicationController
       @software = Software.new
       @categories = Category.order('name ASC')
 
-      respond_to do |format|
-        format.html # new.html.erb
-      end
+			respond_with(@software)
     else
       flash[:warning] = "Anonymous users cannot create new software entries. Please login or create a new user first."
 			redirect_to [:login, @auth]
@@ -75,6 +71,7 @@ class SoftwaresController < ApplicationController
       # role 2  = Normal user
       # role 99 = Unverified user
 
+			@software.user_id = session[:user_id]
       @software.created = Time.now
       @software.updated = Time.now
 
