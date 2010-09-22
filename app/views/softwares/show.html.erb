@@ -60,10 +60,12 @@ version <%= sanitize(@software.version) %>
 </div>
 
 <div class='block-box' id='share-box'>
-<%= link_to( image_tag('/images/digg.png'), "http://digg.com/submit?url=http://#{request.host}#{request.request_uri}", :target => "_blank")%>
-<%= link_to( image_tag('/images/buzz.png'), "http://www.google.com/buzz/post?url=http://#{request.host}#{request.request_uri}", :target => "_blank")%>
-	
-<a href="http://twitter.com/share" class="twitter-share-button" data-text="<%= sanitize(@software.title) %>" data-count="horizontal" data-via="haikufire" style='margin-top: 10px;'>Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<%= link_to( image_tag('/images/digg.png'),
+	"http://digg.com/submit?url=http://#{request.host}#{request.request_uri}", :target => "_blank")%>
+<%= link_to( image_tag('/images/buzz.png'),
+	"http://www.google.com/buzz/post?url=http://#{request.host}#{request.request_uri}", :target => "_blank")%>
+<%= link_to( image_tag('/images/tweet.png'),
+	"http://twitter.com/home?status=Check out http://#{request.host}#{request.request_uri}", :target => "_blank")%>
 </div>
 
 <% else %>
