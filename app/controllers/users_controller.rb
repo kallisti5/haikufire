@@ -17,8 +17,8 @@ class UsersController < ApplicationController
 			flash[:warning] = "Please provide a username and a password"
 			redirect_to [:login]
 		else
-			# @user.password is converted to an md5 hash in the model code
-			valid_user = User.where(:username => @user.username, :password => @user.password).first 
+			require 'digest/md5'
+			valid_user = User.where(:username => @user.username, :password => Digest::MD5.hexdigest( @user.password ) ).first 
 	
 			if valid_user and valid_user.role != 99
 				#creates a session with username
@@ -130,6 +130,20 @@ class UsersController < ApplicationController
 	end
 
   def update
+		@user = User.find(params[:id])
+
+		if @user.update_attributes(params[:user])
+          flash[:info] = "User update successful."
+
+					respond_to do |format|
+						format.html { redirect_to :action => "profile", :id => @user.username }
+					end
+		else
+					respond_to do |format|
+          	format.html { render :action => "edit" }
+          	format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+					end
+		end
   end
 
 end

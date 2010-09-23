@@ -1,6 +1,6 @@
 <table class='block-box' style='padding: 25px; margin: auto;'>
 <tr><td COLSPAN=2 style='font-size: 18px; padding-bottom: 10px;'>
-<%= image_tag '/images/icons/32x32/user_edit.png', :style => "vertical-align:middle" %> Edit user</td></tr>
+<%= image_tag '/images/icons/32x32/user_edit.png', :style => "vertical-align:middle" %> Edit <%= @user.username %></td></tr>
 
 <%= form_for(@user) do |f| %>
 
@@ -16,18 +16,6 @@
   <% end %>  
 
   <tr><td>
-    <%= raw f.label :username %>
-  </td> <td>
-    <%= sanitize(@user.username) %>
-  </td></tr>
-
-  <tr><td>
-    <%= raw f.label :password %>
-  </td><td>
-    <%= raw f.password_field :password, {:value => ''} %>
-  </td></tr>
-
-  <tr><td>
     <%= raw f.label :name %>
   </td><td>
     <%= raw f.text_field :name %>
@@ -37,6 +25,12 @@
     <%= raw f.label :email %>
   </td><td>
     <%= raw f.text_field :email %>
+  </td></tr>
+
+  <tr><td>
+    <%= raw f.label :password %>
+  </td><td>
+    <%= raw f.password_field :password, {:value => ''} %>
   </td></tr>
 
   <tr><td COLSPAN=2 style='text-align: right;'>
