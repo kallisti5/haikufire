@@ -1,6 +1,10 @@
 class SoftwaresController < ApplicationController
 	respond_to :html, :xml
 
+	def index
+		redirect_to :categories
+	end
+
   def show
     @software = Software.where( :title => params[:id] ).first
 
@@ -26,11 +30,7 @@ class SoftwaresController < ApplicationController
     
     if session[:user_id] &&
        ( User.where(:id => session[:user_id]).first.role == 0 || @software.user.first.id == session[:user_id] )
-    
-        respond_to do |format|
-          format.html # show.html.erb
-          format.xml  { render :xml => @software }
-        end
+				respond_with(@software)
     else
       flash[:warning] = "You cannot edit software you have not created. Please login or create a new user first."
 			redirect_to [:login, @auth]
@@ -43,16 +43,16 @@ class SoftwaresController < ApplicationController
     if session[:user_id] &&
        ( User.where(:id => session[:user_id]).first.role == 0 || @software.user.first.id == session[:user_id] )
 
-        respond_to do |format|
+				respond_to do |format|
           if @software.update_attributes(params[:software])
             flash[:info] = 'Software was successfully updated.';
-            format.html { redirect_to( :controller => 'softwares', :action => 'show', :id => @software.title) }
-            format.xml  { head :ok }
+	          format.html { redirect_to :action => 'show', :id => @software.title }
+	          format.xml  { render :xml => @software, :status => :created, :location => @software }
           else
-            format.html { render :action => "edit" }
-            format.xml  { render :xml => @software.errors, :status => :unprocessable_entity }
+						format.html { render :action => "edit" }
+						format.xml  { render :xml => @sofware.errors, :status => :unprocessable_entity }
           end
-        end
+				end
     else
       flash[:warning] = "You cannot edit software you have not created. Please login or create a new user first."
 			redirect_to [:login, @auth]
@@ -86,7 +86,7 @@ class SoftwaresController < ApplicationController
         end
       end
     else
-      flash[:warning] = "Anonymous users cannot create new software entries.<br/>Please login or create a new user first."
+      flash[:warning] = "Anonymous users cannot create new software entries. Please login or create a new user first."
 			redirect_to [:login, @auth]
     end
   end

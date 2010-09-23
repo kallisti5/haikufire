@@ -14,7 +14,7 @@ class CreateUsers < ActiveRecord::Migration
     end
 
         User.create :username => "admin",
-                    :password => "password",  #why yes.. this is the md5 for 'password'
+                    :password => "password",
                     :name => "An administrator",
                     :email => "kallisti5@unixzen.com",
                     :role => 0,

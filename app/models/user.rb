@@ -1,8 +1,5 @@
 class User < ActiveRecord::Base
 
-	# before updating records, be sure to hash the password via md5sum
-	before_update :hash_password
-
 	has_many :softwares
 
 	validates_length_of	:username, :within => 3..32, :message => 'must be between 3 and 32 characters'
@@ -19,10 +16,11 @@ class User < ActiveRecord::Base
 
 	apply_simple_captcha
 
-	def hash_password
-			# not super security, but better then plaintext
+	def password=(password)
+		unless password.blank?
 			require 'digest/md5'
-	    self.password = Digest::MD5.hexdigest( self.password )
+			write_attribute :password, Digest::MD5.hexdigest( password )
+		end
 	end
 
 end

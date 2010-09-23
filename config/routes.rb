@@ -1,5 +1,6 @@
 Haikufire::Application.routes.draw do
   match '/' => 'news#index'
+  resources :categories
   resources :users
   resources :softwares
   match '/auth/login' => 'users#login', :as => :login

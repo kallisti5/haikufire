@@ -14,7 +14,6 @@ class Software < ActiveRecord::Base
 	validates_presence_of :compiled
 
 
-
 	validates_uniqueness_of :title
 
 	### Start paperclip magic
@@ -34,6 +33,9 @@ class Software < ActiveRecord::Base
 		:styles => {
 			:icon => "32x32#"}
 
+	validates_attachment_size :icon, :less_than=>1.megabyte, :if => Proc.new { |imports| !imports.icon_file_name.blank? }
+	validates_attachment_content_type	:icon, :content_type => ['image/jpeg', 'image/png']
+
 	# paperclip application screenshot
 	has_attached_file :screenshot,
 		:default_url => "/assets/no_screenshot.png",
@@ -44,6 +46,7 @@ class Software < ActiveRecord::Base
 		:styles => {
                         :shot_sm => "600x128<"}
 
+	validates_attachment_content_type	:screenshot, :content_type => ['image/jpeg', 'image/png']
 	### End paperclip magic
 
 end

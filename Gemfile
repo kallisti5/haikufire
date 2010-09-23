@@ -5,6 +5,8 @@ gem 'rails', '3.0.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'mysql', '2.8.1'
+
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem "twitter4r", :require => 'twitter'

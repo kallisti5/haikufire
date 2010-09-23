@@ -17,8 +17,7 @@ class UsersController < ApplicationController
 			flash[:warning] = "Please provide a username and a password"
 			redirect_to [:login]
 		else
-			require 'digest/md5'
-			valid_user = User.where(:username => @user.username, :password => Digest::MD5.hexdigest( @user.password ) ).first 
+			valid_user = User.where(:username => @user.username, :password => @user.password ).first 
 	
 			if valid_user and valid_user.role != 99
 				#creates a session with username
@@ -49,8 +48,14 @@ class UsersController < ApplicationController
 		require 'digest/md5'
 
 		@user = User.where( :username => params[:id] ).first
-		# convert email into md5 hash for gravatar
-		@email_hash = Digest::MD5.hexdigest(@user.email.downcase)
+
+		if @user
+			# convert email into md5 hash for gravatar
+			@email_hash = Digest::MD5.hexdigest(@user.email.downcase)
+		else
+			flash[:warning] = "User does not exist!"
+			redirect_to "/"
+		end
   end
 
   def new
@@ -132,7 +137,8 @@ class UsersController < ApplicationController
   def update
 		@user = User.find(params[:id])
 
-		if @user.update_attributes(params[:user])
+		# I think forgery protection takes care of this... but just incase.
+		if @user.id == session[:user_id] and @user.update_attributes(params[:user])
           flash[:info] = "User update successful."
 
 					respond_to do |format|
