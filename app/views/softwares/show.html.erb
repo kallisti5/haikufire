@@ -1,5 +1,5 @@
 <% if @software != nil %>
-<h3><%= @software.title %></h3>
+<h3><%=h @software.title %></h3>
 <div class='description'>Added: <%= "#{Date::ABBR_MONTHNAMES[@software.created.month]} #{@software.created.day}, #{@software.created.year}" %> by <%= link_to( @software.user.username, "/users/profile/#{@software.user.username}") %> in <%= link_to @software.category.name, @software.category %>
 
 <span style='float: right'>Actions:
@@ -38,15 +38,15 @@ version <%= sanitize(@software.version) %>
 <table id='softwareDetails'>
 <tr>
 <td style='width: 90px;'><%= image_tag '/images/icons/16x16/user_green.png', :style => 'vertical-align:middle;' %> Author </td>
-<td><%= sanitize(@software.author) %></td>
+<td><%=h @software.author %></td>
 </tr>
 <tr>
 <td><%= image_tag '/images/icons/16x16/link_go.png', :style => 'vertical-align:middle;' %> Website </td>
-<td><%= link_to sanitize(@software.website), sanitize(@software.website) %></td>
+<td><%= link_to @software.website, sanitize(@software.website) %></td>
 </tr>
 <tr>
 <td><%= image_tag '/images/icons/16x16/cake.png', :style => 'vertical-align:middle;' %> Version </td>
-<td><%= sanitize(@software.version) %></td>
+<td><%=h @software.version %></td>
 </tr>
 <tr>
 <td><%= image_tag '/images/icons/16x16/copying_and_distribution.png', :style => 'vertical-align:middle;' %> License </td>

@@ -11,7 +11,7 @@ I am new to Rails/Ruby... so be kind :)
 * Clean up
 ** uninstall all ruby versions and gems if previously installed
 * Install needed libraries ( you WILL need these ;) )
-** sudo apt-get install libssl-dev zlib-dev libmagickcore-dev libmagickwand-dev sqlite3 libsqlite3-dev libreadline-dev
+** sudo apt-get install libssl-dev zlib-dev libmagickcore-dev libmagickwand-dev sqlite3 libsqlite3-dev libreadline-dev imagemagick
 * Setup ruby environment
 ** install rvm system-wide
 ** add user to rvm group

@@ -5,8 +5,8 @@ class Software < ActiveRecord::Base
 
 	validates_presence_of :title
 	validates_format_of     :title,
-				:with       => /^[a-z0-9\s\(\)\']+$/i,
-				:message    => 'must only contain valid characters ( eg. a-z 0-9 ( ) \' )'
+				:with       => /^[a-z0-9\s\']+$/i,
+				:message    => 'must only contain valid characters ( eg. a-z 0-9 \' )'
 
 	validates_presence_of :category_id
 	validates_presence_of :author
