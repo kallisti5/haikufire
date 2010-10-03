@@ -63,7 +63,7 @@
 		<ul>
 		<% $softwares = pull_recent_software() %>
 		<% $softwares.each do |software|%>
-			<li><%= link_to software.title, "/softwares/show/#{software.title}" %> <span style='font-size: 10px;'>
+			<li><%= link_to software.title, software %> <span style='font-size: 10px;'>
 			<%= "#{Date::ABBR_MONTHNAMES[software.updated.month]} #{software.updated.day}" %></li>
 		<% end %>
 		</ul>

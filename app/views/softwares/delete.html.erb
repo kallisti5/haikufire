@@ -1,0 +1,9 @@
+<h3>Are you sure you want to delete this software item?</h3>
+<br/>
+<b><%=h @software.title %></b>
+Created: <%= @software.created %>
+<br/><br/>
+<% form_for @software, :html => { :method => 'delete' } do |f| %>
+    <%= submit_tag "Yes" %>
+    <%= submit_tag "No", :name => "cancel" %>
+<% end %>

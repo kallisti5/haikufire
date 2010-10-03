@@ -38,7 +38,7 @@ class SoftwaresController < ApplicationController
   end
 
   def update
-    @software = Software.find(params[:id])
+    @software = Software.where(:title => params[:id]).first
 
     if session[:user_id] &&
        ( User.where(:id => session[:user_id]).first.role == 0 || @software.user.first.id == session[:user_id] )
@@ -49,6 +49,8 @@ class SoftwaresController < ApplicationController
 	          format.html { redirect_to :action => 'show', :id => @software.title }
 	          format.xml  { render :xml => @software, :status => :created, :location => @software }
           else
+						# We have to repull categories to show the edit page again
+    				@categories = Category.order('name ASC')
 						format.html { render :action => "edit" }
 						format.xml  { render :xml => @sofware.errors, :status => :unprocessable_entity }
           end
@@ -59,6 +61,28 @@ class SoftwaresController < ApplicationController
     end
   end
 
+	def delete
+    @software = Software.where(:title => params[:id]).first
+		respond_to do |format|
+			format.html # delete.html.erb
+		end
+	end
+
+	def destroy
+    @software = Software.where(:title => params[:id]).first
+		redirect_to(@software) and return if params[:cancel]
+
+    if session[:user_id] &&
+       ( User.where(:id => session[:user_id]).first.role == 0 || @software.user.first.id == session[:user_id] )
+			@software.destroy
+			respond_to do |format|
+				format.html { redirect_to softwares_path }
+			end
+		else
+      flash[:warning] = "You cannot delete software you have not created. Please login or create a new user first."
+			redirect_to [:login, @auth]
+		end
+	end
 
   def create
     if session[:user_id] && pull_user_role(session[:user_id]) != 99

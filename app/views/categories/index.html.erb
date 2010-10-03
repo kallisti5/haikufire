@@ -6,7 +6,7 @@
         <tr>
                 <th width=32px;><%= image_tag "/images/category_icons/#{category.name.downcase}.png" %></th>
                 <td>
-			<%= link_to category.name, "/categories/show/#{category.name}" %> (<%= item_count %>)
+			<%= link_to category.name, category %> (<%= item_count %>)
                         <br><span class='detail'><%= category.description %></span>
                 </td>
         </tr>
