@@ -1,8 +1,8 @@
 development:
   adapter: mysql
-  database: haikufire_dev
-  username: root
-  password: pass123
+  database: haikufire
+  username: haikufire
+  password: password123
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
