@@ -28,6 +28,12 @@
   </td></tr>
 
   <tr><td>
+    <%= raw f.label :password %> (again)
+  </td><td>
+    <%= raw f.password_field :password_confirmation, {:value => ''} %>
+  </td></tr>
+
+  <tr><td>
     <%= raw f.label :name %>
   </td><td>
     <%= raw f.text_field :name %>

@@ -11,13 +11,19 @@ class UsersController < ApplicationController
   end
 
   def authenticate
+		require 'digest/sha2'
+
 		@user = User.new(params[:userform])
 	
 		if !@user.username or !@user.password
 			flash[:warning] = "Please provide a username and a password"
 			redirect_to [:login]
 		else
-			valid_user = User.where(:username => @user.username, :password => @user.password ).first 
+			cannidate = User.where( :username => @user.username ).first 
+
+			if cannidate and cannidate.pass_hash == Digest::SHA2.hexdigest(cannidate.pass_salt + @user.password)
+				valid_user = cannidate
+			end
 	
 			if valid_user and valid_user.role != 99
 				#creates a session with username
@@ -110,14 +116,14 @@ class UsersController < ApplicationController
          user = nil
       end
 
-      if user
-         user.role = 2
-         user.validation_hash = ""
-         user.save
-         flash[:info] = "User validation successful, thanks for registering #{user.username}!<br/>You may now login."
-      else
-         flash[:warning] = "User validation was un-successful, invalid validation token passed."
-      end
+		if user
+			user.attributes = { :role => 2, :validation_hash => "" }
+			user.save(:validate => false)
+
+			flash[:info] = "User validation successful, thanks for registering #{user.username}! You may now login."
+		else
+			flash[:warning] = "User validation was un-successful, invalid validation token passed."
+		end
 
       respond_to do |format|
         format.html { redirect_to [:login] }

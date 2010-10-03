@@ -33,6 +33,12 @@
     <%= raw f.password_field :password, {:value => ''} %>
   </td></tr>
 
+  <tr><td>
+    <%= raw f.label :password %> (again)
+  </td><td>
+    <%= raw f.password_field :password_confirmation, {:value => ''} %>
+  </td></tr>
+
   <tr><td COLSPAN=2 style='text-align: right;'>
     <%= f.submit "Update" %>
   </td></tr>

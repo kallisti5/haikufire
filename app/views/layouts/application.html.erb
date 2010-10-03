@@ -41,11 +41,17 @@
 		</div>
 		<% end %>
 
-                <% if flash[:info] %>
-                <div id='infoExplanation'>
-                <%= flash[:info] %>
-                </div>
-                <% end %>
+		<% if flash[:info] %>
+		<div id='infoExplanation'>
+		<%= flash[:info] %>
+		</div>
+		<% end %>
+
+		<% if @debugger %>
+		<pre>
+		<%= @debugger %>
+		</pre>
+		<% end %>
 
 		<!-- Main content area -->
 		<%= yield %>

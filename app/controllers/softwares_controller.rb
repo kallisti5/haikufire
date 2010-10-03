@@ -27,21 +27,22 @@ class SoftwaresController < ApplicationController
   def edit
     @software = Software.where( :title => params[:id] ).first
     @categories = Category.order('name ASC')
-    
+
     if session[:user_id] &&
-       ( User.where(:id => session[:user_id]).first.role == 0 || @software.user.first.id == session[:user_id] )
+       ( User.where(:id => session[:user_id]).first.isadmin? || @software.user.id == session[:user_id] )
 				respond_with(@software)
     else
-      flash[:warning] = "You cannot edit software you have not created. Please login or create a new user first."
-			redirect_to [:login, @auth]
+      flash[:warning] = "You cannot edit software you have not created. (error code: 0xNICETRY.EDT)"
+			redirect_to(@software)
     end
   end
 
   def update
     @software = Software.where(:title => params[:id]).first
+		redirect_to('/') and return if !@software		# safty catch for people doing things they shouldn't
 
     if session[:user_id] &&
-       ( User.where(:id => session[:user_id]).first.role == 0 || @software.user.first.id == session[:user_id] )
+       ( User.where(:id => session[:user_id]).first.isadmin? || @software.user.id == session[:user_id] )
 
 				respond_to do |format|
           if @software.update_attributes(params[:software])
@@ -56,31 +57,40 @@ class SoftwaresController < ApplicationController
           end
 				end
     else
-      flash[:warning] = "You cannot edit software you have not created. Please login or create a new user first."
-			redirect_to [:login, @auth]
+      flash[:warning] = "You cannot edit software you have not created. (error code: 0xNICETRY.UPD)"
+			redirect_to(@software)
     end
   end
 
 	def delete
     @software = Software.where(:title => params[:id]).first
-		respond_to do |format|
-			format.html # delete.html.erb
+		redirect_to('/') and return if !@software		# safty catch for people doing things they shouldn't
+
+		if session[:user_id] &&
+		( User.where(:id => session[:user_id]).first.isadmin? || @software.user.id == session[:user_id] )
+			respond_to do |format|
+				format.html # delete.html.erb
+			end
+		else
+      flash[:warning] = "You cannot delete software you have not created. (error code: 0xNICETRY.DEL)"
+			redirect_to(@software)
 		end
 	end
 
 	def destroy
     @software = Software.where(:title => params[:id]).first
+		redirect_to('/') and return if !@software		# safty catch for people doing things they shouldn't
 		redirect_to(@software) and return if params[:cancel]
 
     if session[:user_id] &&
-       ( User.where(:id => session[:user_id]).first.role == 0 || @software.user.first.id == session[:user_id] )
+       ( User.where(:id => session[:user_id]).first.isadmin? || @software.user.id == session[:user_id] )
 			@software.destroy
 			respond_to do |format|
 				format.html { redirect_to softwares_path }
 			end
 		else
-      flash[:warning] = "You cannot delete software you have not created. Please login or create a new user first."
-			redirect_to [:login, @auth]
+      flash[:warning] = "You cannot delete software you have not created. (error code: 0xNICETRY.DES)"
+			redirect_to(@software)
 		end
 	end
 
@@ -114,6 +124,5 @@ class SoftwaresController < ApplicationController
 			redirect_to [:login, @auth]
     end
   end
-
 
 end

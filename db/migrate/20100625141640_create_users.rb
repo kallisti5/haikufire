@@ -2,7 +2,8 @@ class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
       t.string :username	# user login
-      t.string :password	# md5 of user password
+      t.string :pass_hash	# hash of user password
+      t.string :pass_salt	# salt of user password
       t.string :name		# user real name
       t.string :email		# user email
       t.integer :role		# user role, 0=site admin, 1=super admin, 2=user, 99=unvalidated
