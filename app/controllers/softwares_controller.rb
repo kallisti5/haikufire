@@ -29,8 +29,8 @@ class SoftwaresController < ApplicationController
     @categories = Category.order('name ASC')
 
     if session[:user_id] &&
-       ( User.where(:id => session[:user_id]).first.isadmin? || @software.user.id == session[:user_id] )
-				respond_with(@software)
+    ( User.where(:id => session[:user_id]).first.isadmin? || @software.user.id == session[:user_id] )
+			respond_with(@software)
     else
       flash[:warning] = "You cannot edit software you have not created. (error code: 0xNICETRY.EDT)"
 			redirect_to(@software)
@@ -42,20 +42,20 @@ class SoftwaresController < ApplicationController
 		redirect_to('/') and return if !@software		# safty catch for people doing things they shouldn't
 
     if session[:user_id] &&
-       ( User.where(:id => session[:user_id]).first.isadmin? || @software.user.id == session[:user_id] )
+    ( User.where(:id => session[:user_id]).first.isadmin? || @software.user.id == session[:user_id] )
 
-				respond_to do |format|
-          if @software.update_attributes(params[:software])
-            flash[:info] = 'Software was successfully updated.';
-	          format.html { redirect_to :action => 'show', :id => @software.title }
-	          format.xml  { render :xml => @software, :status => :created, :location => @software }
-          else
-						# We have to repull categories to show the edit page again
-    				@categories = Category.order('name ASC')
-						format.html { render :action => "edit" }
-						format.xml  { render :xml => @sofware.errors, :status => :unprocessable_entity }
-          end
+			respond_to do |format|
+				if @software.update_attributes(params[:software])
+					flash[:info] = 'Software was successfully updated.';
+					format.html { redirect_to :action => 'show', :id => @software.title }
+					format.xml  { render :xml => @software, :status => :created, :location => @software }
+				else
+					# We have to repull categories to show the edit page again
+					@categories = Category.order('name ASC')
+					format.html { render :action => "edit" }
+					format.xml  { render :xml => @sofware.errors, :status => :unprocessable_entity }
 				end
+			end
     else
       flash[:warning] = "You cannot edit software you have not created. (error code: 0xNICETRY.UPD)"
 			redirect_to(@software)
