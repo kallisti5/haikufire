@@ -28,14 +28,15 @@ namespace :db do
 		@parsed_file=CSV::Reader.parse(params[:dump][:file])
 		n=0
 		@parsed_file.each  do |row|
-		c=CustomerInformation.new
-		c.job_title=row[1]
-		c.first_name=row[2]
-		c.last_name=row[3]
-		if c.save
-			n=n+1
-			GC.start if n%50==0
+			c=CustomerInformation.new
+			c.job_title=row[1]
+			c.first_name=row[2]
+			c.last_name=row[3]
+			if c.save
+				n=n+1
+				GC.start if n%50==0
+			end
+			puts "CSV import great success! #{n} new software items added to data base."
 		end
-		puts "CSV import great success! #{n} new software items added to data base."
 	end
 end
