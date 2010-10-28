@@ -1,6 +1,6 @@
 development:
   adapter: mysql
-  database: haikufire
+  database: haikufire-dev
   username: haikufire
   password: password123
   host: localhost

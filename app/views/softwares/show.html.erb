@@ -65,11 +65,11 @@ version <%= sanitize(@software.version) %>
 
 <div class='block-box' id='share-box'>
 <%= link_to( image_tag('/images/digg.png'),
-	"http://digg.com/submit?url=http://#{request.host}#{request.request_uri}", :target => "_blank")%>
+	"http://digg.com/submit?url=http://#{request.host}#{request.fullpath}", :target => "_blank")%>
 <%= link_to( image_tag('/images/buzz.png'),
-	"http://www.google.com/buzz/post?url=http://#{request.host}#{request.request_uri}", :target => "_blank")%>
+	"http://www.google.com/buzz/post?url=http://#{request.host}#{request.fullpath}", :target => "_blank")%>
 <%= link_to( image_tag('/images/tweet.png'),
-	"http://twitter.com/home?status=Check out http://#{request.host}#{request.request_uri}", :target => "_blank")%>
+	"http://twitter.com/home?status=Check out http://#{request.host}#{request.fullpath}", :target => "_blank")%>
 </div>
 
 <% else %>
