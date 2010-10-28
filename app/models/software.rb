@@ -3,6 +3,8 @@ class Software < ActiveRecord::Base
 	belongs_to :category	# many softwares belong to a single category
 	belongs_to :user	# many softwares belong to a single user (submitter)
 
+	has_many :downloads	# many downloads belong to a single piece of software
+
 	validates_presence_of :title
 	validates_format_of     :title,
 				:with       => /^[a-z0-9\s\']+$/i,

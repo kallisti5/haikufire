@@ -10,11 +10,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100709164830) do
+ActiveRecord::Schema.define(:version => 20101028163058) do
+
+  create_table "arches", :force => true do |t|
+    t.string   "name"
+    t.integer  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", :force => true do |t|
     t.string "name"
     t.text   "description"
+  end
+
+  create_table "downloads", :force => true do |t|
+    t.integer  "software_id"
+    t.integer  "arch_id"
+    t.string   "dl_file_name"
+    t.string   "dl_content_type"
+    t.integer  "dl_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "simple_captcha_data", :force => true do |t|

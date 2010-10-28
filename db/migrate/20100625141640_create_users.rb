@@ -13,13 +13,6 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps
     end
-
-        User.create :username => "admin",
-                    :password => "password",
-                    :name => "An administrator",
-                    :email => "kallisti5@unixzen.com",
-                    :role => 0,
-                    :created_at => Time.now
   end
 
   def self.down
