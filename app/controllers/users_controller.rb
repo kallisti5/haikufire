@@ -125,19 +125,25 @@ class UsersController < ApplicationController
 			flash[:warning] = "User validation was un-successful, invalid validation token passed."
 		end
 
-      respond_to do |format|
+		respond_to do |format|
         format.html { redirect_to [:login] }
-      end
+		end
 
   end
 
   def edit
     @user = User.where(:username => params[:id]).first
-
-    respond_to do |format|
-      format.html
-      format.xml  { render :xml => @user }
-    end
+		if @user.id != session[:user_id]
+			flash[:warning] = "You do not have the proper access to edit this user!";
+			respond_to do |format|
+      	  format.html { redirect_to [:login] }
+			end
+		else
+    	respond_to do |format|
+    	  format.html
+    	  format.xml  { render :xml => @user }
+    	end
+		end
 	end
 
   def update
@@ -145,16 +151,17 @@ class UsersController < ApplicationController
 
 		# I think forgery protection takes care of this... but just incase.
 		if @user.id == session[:user_id] and @user.update_attributes(params[:user])
-          flash[:info] = "User update successful."
 
-					respond_to do |format|
-						format.html { redirect_to :action => "profile", :id => @user.username }
-					end
+			flash[:info] = "User update successful."
+
+			respond_to do |format|
+				format.html { redirect_to :action => "profile", :id => @user.username }
+			end
 		else
-					respond_to do |format|
-          	format.html { render :action => "edit" }
-          	format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-					end
+			respond_to do |format|
+       	format.html { render :action => "edit" }
+       	format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+			end
 		end
   end
 
