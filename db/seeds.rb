@@ -46,3 +46,28 @@ Arch.create( :name => "ARM", :active => 0 )
 Arch.create( :name => "MIPS", :active => 0 )
 Arch.create( :name => "MIPSEL", :active => 0 )
 Arch.create( :name => "m68k", :active => 0 )
+
+
+Software.create( :title => "Test application",
+                 :category_id => 1,
+                 :user_id => 1,
+                 :website => "http://fancypants.com",
+                 :description => "Test software item\n* Produces test data\n* Full of win\n* Migrates cleanly",
+                 :author => "Jose fancy-pants",
+                 :license => "GPL",
+                 :version => "1.0",
+                 :created => Time.parse("5/20"),
+                 :updated => Time.parse("5/24"),
+                 :compiled => "Native")
+
+Software.create( :title => "Test application II",
+                        :category_id => 1,
+                        :user_id => 1,
+                        :website => "http://fancypants.com",
+                        :description => "Test development software item",
+                        :author => "Jose fancy-pants",
+                        :license => "GPL",
+                        :version => "r102",
+                        :created => Time.now,
+                        :updated => Time.now,
+                        :compiled => "Compatible")

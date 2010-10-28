@@ -6,6 +6,8 @@
 <% if pull_user_role(session[:user_id]) == 0 || @software.user.id == session[:user_id] %>
 <%= link_to image_tag('/images/icons/16x16/application_form_edit.png', :style => 'vertical-align:middle; border:0px;', :alt => 'Edit application'), :controller => 'softwares', :action => 'edit', :id => @software.title %>
 
+<%= link_to image_tag('/images/icons/16x16/disk_multiple.png', :style => 'vertical-align:middle; border:0px;', :alt => 'Application downloads'), :controller => 'downloads', :action => 'show', :id => @software.title %>
+
 <%= link_to image_tag('/images/icons/16x16/delete.png', :style => 'vertical-align:middle; border:0px;', :alt => 'Edit application'), :controller => 'softwares', :action => 'delete', :id => @software.title %>
 
 <% else %>

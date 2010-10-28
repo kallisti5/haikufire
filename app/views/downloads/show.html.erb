@@ -1,0 +1,23 @@
+<table class='block-box' style='padding: 25px; margin: auto; width:90%;'>
+<tr><td COLSPAN=3 style='font-size: 18px; padding-bottom: 10px;'>
+<%= image_tag '/images/icons/32x32/disk_multiple.png', :style => "vertical-align:middle" %> Downloads for <%=@software.title%></td></tr>
+
+  <tr><td style='border-bottom: 1px solid #567EBB;'><b>Architecture</b></td>
+      <td style='border-bottom: 1px solid #567EBB;'><b>Current file</b></td>
+      <td style='border-bottom: 1px solid #567EBB;'><b>Actions</b></td></tr>
+<% @arches.each do |arch| %>
+  <tr><td>
+    <%= raw arch.name %>
+  </td><td>
+    <% item = @software.downloads.where( :arch_id => arch.id ).first %>
+    <% if (!item) %>
+    <span style='color: #ccc'>none</span>
+    <% else %>
+    <%= item.dl_file_name %>
+    <% end %>
+  </td><td>
+    <%= image_tag '/images/icons/16x16/delete.png', :style => "vertical-align:middle" %>
+  </td></tr>
+<% end %>
+
+</table>

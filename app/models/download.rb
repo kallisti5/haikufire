@@ -1,6 +1,6 @@
 class Download < ActiveRecord::Base
   belongs_to :software    # one software item has many downloads
-  has_one :arch						# one download has on arch
+  belongs_to :arch           # one download has on arch
 
   has_attached_file :dl,
                     :default_url => "/error/dlnotexist",

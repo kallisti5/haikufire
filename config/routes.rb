@@ -1,4 +1,14 @@
 Haikufire::Application.routes.draw do
+  get "downloads/edit"
+
+  get "downloads/update"
+
+  get "downloads/delete"
+
+  get "downloads/destroy"
+
+  get "downloads/get"
+
   match '/' => 'news#index'
   resources :categories
   resources :users

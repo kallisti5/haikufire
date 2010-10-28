@@ -123,5 +123,4 @@ class SoftwaresController < ApplicationController
 			redirect_to [:login, @auth]
 		end
 	end
-
 end
