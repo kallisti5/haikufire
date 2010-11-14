@@ -1,0 +1,5 @@
+#!/bin/bash
+source /usr/local/lib/rvm
+rvm use 1.9.2
+cd /var/apps/haikufire/
+./script/rails s -p $1
