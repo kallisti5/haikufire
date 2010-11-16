@@ -30,7 +30,7 @@ version <%= sanitize(@software.version) %>
 <% if !@software.screenshot_file_name %>
 <%= image_tag(@software.screenshot.url(:shot_sm), :id => 'softwareShot') %>
 <% else %>
-<%= link_to( image_tag(@software.screenshot.url(:shot_sm), :id => 'softwareShot'), @software.screenshot.url,  :target => "_blank") %>
+<%= link_to( image_tag(@software.screenshot.url(:shot_sm), :id => 'softwareShot'), @software.screenshot.url,  :target => "_blank", :rel => "lightbox") %>
 <% end %>
 
 </center>
