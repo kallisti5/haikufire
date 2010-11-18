@@ -7,6 +7,7 @@ class SoftwaresController < ApplicationController
 
 	def show
 		@software = Software.where( :title => params[:id] ).first
+		@arches = Arch.where( :active => 1 )
 
 		respond_with(@software)
 	end

@@ -280,3 +280,8 @@ footer div {
 	background-image: url( /images/share.png );
 	background-repeat: no-repeat;
 }
+#download-box {
+	text-align: right;
+	background-image: url( /images/download.png );
+	background-repeat: no-repeat;
+}

@@ -65,6 +65,14 @@ version <%= sanitize(@software.version) %>
 </table>
 </div>
 
+<div class='block-box' id='download-box'>
+
+<% @arches.each do |arch| %>
+<%= link_to arch.name %>&nbsp;
+<% end %>
+
+</div>
+
 <div class='block-box' id='share-box'>
 <%= link_to( image_tag('/images/digg.png', :border => 0),
 	"http://digg.com/submit?url=http://#{request.host}#{request.fullpath}", :target => "_blank")%>
