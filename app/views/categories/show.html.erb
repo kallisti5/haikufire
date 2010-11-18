@@ -14,7 +14,7 @@
 	                <tr>
 	                <th> <%= image_tag software.icon.url(:icon) %> </th>
 	                <td> <span style='border-bottom: 1px solid #567EBB;'>
-	                        <%= link_to software.title, sanitize("/softwares/show/" << software.title) %>
+			<%= link_to software.title, :controller => "softwares", :action => "show", :id => software.title %>
 			<span style='font-size: 0.8em;'> by <%= sanitize(software.author) %></span> </span>
 	                <div class='detail'><%= truncate(sanitize(software.description), :length => 90, :omission => '...') %></div> </td>
 	                </tr>

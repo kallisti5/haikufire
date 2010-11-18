@@ -13,11 +13,11 @@
     <% if (!item) %>
     <span style='color: #ccc'>none</span>
     <% else %>
-    <%= item.dl_file_name %>
+    <%= sanitize(item.dl_file_name) %>
     <% end %>
   </td><td>
-    <%= image_tag '/images/icons/16x16/pencil.png', :style => "vertical-align:middle" %>
-    <%= image_tag '/images/icons/16x16/delete.png', :style => "vertical-align:middle" %>
+    <%= link_to (image_tag '/images/icons/16x16/pencil.png', :style => "vertical-align:middle"), :controller => "downloads", :action => "edit", :id => @software.title %>
+    <%= link_to (image_tag '/images/icons/16x16/delete.png', :style => "vertical-align:middle"), :controller => "downloads", :action => "delete", :id => @software.title %>
   </td></tr>
 <% end %>
 
