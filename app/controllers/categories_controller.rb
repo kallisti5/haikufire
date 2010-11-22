@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
   def show
 
     @category = Category.where(:name => params[:id]).first
-    @softwares = @category.softwares
+    @softwares = @category.softwares.paginate(:per_page => 12, :page => params[:page])
 
     respond_to do |format|
       format.html # show.html.erb

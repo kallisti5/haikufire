@@ -115,30 +115,29 @@ nav ul li.selected a {
 }
 
 #intro {
-	border-radius:15px;
-	-moz-border-radius:15px;
-	-webkit-border-radius:15px;
-	background:url("/images/intro.png") repeat-x scroll 0 0 #467612;
-	border:1px solid black;
-	margin-top:66px;
-	/* offset the margin needed for the titlebar */
-	margin-bottom:-40px;
-	padding:44px;
-	height: 220px;
+	margin-top: 53px;
+        height: 255px;
 	position:relative;
-	color: #fff;
-	text-shadow: 1px 1px 2px black;
+	padding: 0;
 }
 
-#intro .title {
-	font-size: 34px;
+ul#introSlideshow {
+        position: relative;
+	padding: 0;
+}       
+        
+ul#introSlideshow li {
+        display: block;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        text-align: center;
+}       
+
+ul#introSlideshow li img {
 }
 
-#intro .detail {
-	margin-left:20px;
-	margin-top:8px;
-	line-height:1.2em;
-}
 
 .alert {
 	-webkit-border-radius: 5px;

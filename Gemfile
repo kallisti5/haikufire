@@ -14,6 +14,8 @@ gem 'RedCloth', :require => 'redcloth'
 
 gem "rmagick", :require => 'RMagick'
 
+gem 'will_paginate', '3.0.pre2'
+gem 'jquery-rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'
