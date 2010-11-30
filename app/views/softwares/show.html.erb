@@ -68,7 +68,7 @@ version <%= sanitize(@software.version) %>
 <div class='block-box' id='download-box'>
 
 <% @arches.each do |arch| %>
-<%= link_to arch.name %>&nbsp;
+<%= link_to arch.name, "/dl/#{arch.name}/#{@software.title}"%>&nbsp;
 <% end %>
 
 </div>

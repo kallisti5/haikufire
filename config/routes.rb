@@ -6,6 +6,7 @@ Haikufire::Application.routes.draw do
   resources :downloads
   match '/auth/login' => 'users#login', :as => :login
   match '/auth/logout' => 'users#logout', :as => :logout
+	match '/dl(/:arch(/:id))' => 'downloads#get', :as => :get
   match '/simple_captcha(/:action)' => 'simple_captcha', :as => :simple_captcha
   match '/:controller(/:action(/:id))'
 end
