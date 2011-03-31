@@ -2,4 +2,5 @@
 source /usr/local/lib/rvm
 rvm use 1.9.2
 cd /var/apps/haikufire/
-./script/rails s -p $1
+export RAILS_ENV=$1
+./script/rails s -p $2 -e $1

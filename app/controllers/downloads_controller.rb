@@ -21,7 +21,7 @@ class DownloadsController < ApplicationController
 			flash[:warning] = "Invalid software item. (error code: 0xNOENTRY.GET)"
 			redirect_to(:controller => 'categories')
 		else
-			@download = @software.downloads.for_arch(params[:arch]).first
+			@download = @software.downloads.for_arch(params[:arch])
 			if !@download
 				flash[:warning] = "Invalid architecture for software item. (error code: 0xNOARCH.GET)"
 				redirect_to(@software)

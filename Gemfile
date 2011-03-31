@@ -6,6 +6,7 @@ gem 'rails', '3.0.1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql', '2.8.1'
+gem 'pg'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 

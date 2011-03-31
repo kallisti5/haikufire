@@ -5,7 +5,7 @@ class Download < ActiveRecord::Base
 	#joins(:arch).where(:arch => x)
 
 	def self.for_arch(name) 
-		where("downloads.arch_id = ?", Arch.where(:name => name).first.id)  
+		where("downloads.arch_id = ?", Arch.where(:name => name).first.id)
 	end 
 
   has_attached_file :dl,

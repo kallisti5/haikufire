@@ -61,9 +61,6 @@ ActiveRecord::Schema.define(:version => 20101028163058) do
     t.string   "screenshot_file_name"
     t.string   "screenshot_content_type"
     t.integer  "screenshot_file_size"
-    t.string   "download_file_name"
-    t.string   "download_content_type"
-    t.integer  "download_file_size"
   end
 
   create_table "users", :force => true do |t|
